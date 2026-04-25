@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<link rel="icon" type="image/x-icon" href="favicon.ico"/>
+<link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+<link rel="apple-touch-icon" href="favicon-180.png"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Esports Marketing Agency — PulseDevix</title>
+<style>/* ═══════════════════════════════════════
+   PULSEDEVIX — Shared Design System
+   Colors: NinjaPromo purple system
+   Font: Inter + DM Mono
+═══════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&display=swap');
+
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:#0B0B1A;font-family:'Inter',sans-serif;color:#fff;overflow-x:hidden;}
+
+/* ── Tokens ── */
+:root{
+  --bg:#0B0B1A; --surface:#11112A; --card:#16163A;
+  --border:#1E1E4A; --purple:#7B5CE5; --violet:#9B6FF0;
+  --lavender:#C3A7FF; --pink:#E040FB; --muted:#8888AA; --dim:#5A5A7A;
+}
+
+/* ── Utilities ── */
+.grad-text{background:linear-gradient(135deg,#9B6FF0 0%,#C3A7FF 50%,#E040FB 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.grad-text-warm{background:linear-gradient(135deg,#7B5CE5 0%,#9B6FF0 40%,#E040FB 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.glow-blob{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;}
+.dot-grid{background-image:radial-gradient(circle,rgba(123,92,229,0.15) 1px,transparent 1px);background-size:32px 32px;}
+.divider{height:1px;background:linear-gradient(90deg,transparent,#1E1E4A,transparent);margin:0;}
+.sec-label{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#9B6FF0;}
+.container{max-width:1100px;margin:0 auto;padding:0 24px;}
+
+/* ── Nav ── */
+.pd-nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(16px);background:rgba(11,11,26,0.9);border-bottom:1px solid #1E1E4A;}
+.pd-nav__inner{max-width:1200px;margin:0 auto;padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between;}
+.pd-nav__logo{font-weight:800;font-size:18px;letter-spacing:-0.02em;text-decoration:none;color:#fff;}
+.pd-nav__links{display:flex;gap:28px;align-items:center;}
+.pd-nav__links a{color:#8888AA;font-size:14px;font-weight:500;text-decoration:none;transition:color .2s;}
+.pd-nav__links a:hover{color:#fff;}
+.pd-nav__links a.active{color:#fff;}
+
+/* ── Buttons ── */
+.btn-primary{background:linear-gradient(135deg,#7B5CE5,#9B6FF0);color:#fff;font-weight:700;border:none;border-radius:8px;padding:14px 28px;font-size:15px;cursor:pointer;transition:opacity .2s,transform .15s;display:inline-flex;align-items:center;gap:8px;text-decoration:none;}
+.btn-primary:hover{opacity:.88;transform:translateY(-1px);}
+.btn-primary-sm{padding:10px 20px;font-size:14px;}
+.btn-outline{background:transparent;color:#C3A7FF;font-weight:600;border:1px solid #1E1E4A;border-radius:8px;padding:14px 28px;font-size:15px;cursor:pointer;transition:border-color .2s,color .2s;display:inline-flex;align-items:center;gap:8px;text-decoration:none;}
+.btn-outline:hover{border-color:#9B6FF0;color:#fff;}
+.btn-ghost{background:transparent;color:#8888AA;border:1px solid #1E1E4A;border-radius:8px;padding:10px 20px;font-size:13px;font-weight:500;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:all .2s;}
+.btn-ghost:hover{border-color:#7B5CE5;color:#C3A7FF;}
+
+/* ── Badge ── */
+.badge{display:inline-flex;align-items:center;gap:6px;background:rgba(123,92,229,0.15);border:1px solid rgba(123,92,229,0.35);border-radius:100px;padding:5px 14px;font-size:12px;font-weight:500;color:#C3A7FF;font-family:'DM Mono',monospace;letter-spacing:0.06em;}
+.badge .dot{width:7px;height:7px;border-radius:50%;background:#7B5CE5;animation:pulseDot 2s ease-in-out infinite;}
+@keyframes pulseDot{0%,100%{opacity:.5}50%{opacity:1}}
+
+/* ── Cards ── */
+.feature-card{background:#11112A;border:1px solid #1E1E4A;border-radius:14px;padding:24px;transition:border-color .25s,transform .2s;}
+.feature-card:hover{border-color:rgba(123,92,229,0.5);transform:translateY(-3px);}
+.stat-card{background:#11112A;border:1px solid #1E1E4A;border-radius:12px;padding:20px 24px;}
+.process-card{background:#11112A;border:1px solid #1E1E4A;border-radius:14px;padding:24px;display:flex;gap:16px;}
+.service-link-card{background:#11112A;border:1px solid #1E1E4A;border-radius:12px;padding:18px 20px;text-decoration:none;display:flex;align-items:center;justify-content:space-between;transition:all .2s;}
+.service-link-card:hover{border-color:#7B5CE5;transform:translateX(4px);}
+
+/* ── Service hero ── */
+.svc-hero{position:relative;min-height:72vh;display:flex;align-items:center;padding:80px 24px 60px;overflow:hidden;}
+
+/* ── Stat strip ── */
+.stat-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#1E1E4A;border-radius:14px;overflow:hidden;border:1px solid #1E1E4A;}
+.stat-strip__item{background:#11112A;padding:20px 24px;}
+
+/* ── Process step number ── */
+.step-circle{width:40px;height:40px;border-radius:50%;background:rgba(123,92,229,0.15);border:1px solid rgba(123,92,229,0.4);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;color:#C3A7FF;flex-shrink:0;}
+
+/* ── Icon box ── */
+.icon-box{width:48px;height:48px;border-radius:12px;background:rgba(123,92,229,0.15);border:1px solid rgba(123,92,229,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+
+/* ── Breadcrumb ── */
+.breadcrumb{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#5A5A7A;display:flex;align-items:center;gap:8px;margin-bottom:20px;}
+.breadcrumb a{color:#5A5A7A;text-decoration:none;transition:color .2s;}
+.breadcrumb a:hover{color:#9B6FF0;}
+.breadcrumb span{color:#3A3A5A;}
+
+/* ── CTA section ── */
+.cta-section{padding:100px 24px;text-align:center;position:relative;overflow:hidden;}
+
+/* ── Footer ── */
+.pd-footer{padding:60px 24px 32px;background:#080810;}
+.pd-footer a{color:#5A5A7A;font-size:13px;text-decoration:none;transition:color .2s;display:block;margin-bottom:8px;}
+.pd-footer a:hover{color:#C3A7FF;}
+
+/* ── Feat item ── */
+.feat-item{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:#C8C8DD;line-height:1.5;}
+.feat-check{width:18px;height:18px;border-radius:50%;flex-shrink:0;margin-top:1px;background:rgba(123,92,229,0.2);border:1px solid rgba(123,92,229,0.5);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#9B6FF0;}
+
+/* ── Noise ── */
+body::after{content:'';position:fixed;inset:0;z-index:100;pointer-events:none;opacity:.025;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+
+/* ── Animations ── */
+.fade-up{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease;}
+.fade-up.visible{opacity:1;transform:translateY(0);}
+</style>
+</head>
+<body>
+<nav class="pd-nav">
+  <div class="pd-nav__inner">
+    <a href="index.html" class="pd-nav__logo">Pulse<span class="grad-text">Devix</span></a>
+    <div class="pd-nav__links">
+      <a href="service-paid-ads.html">Services</a>
+      <a href="industry-real-estate.html">Industries</a>
+      <a href="index.html#cases">Case Studies</a>
+      <a href="index.html#pricing">Pricing</a>
+      <a href="about.html">About</a>
+    </div>
+    <a href="contact.html" class="btn-primary btn-primary-sm">Book Intro Call</a>
+  </div>
+</nav>
+
+<section class="svc-hero dot-grid">
+  <div class="glow-blob" style="width:600px;height:600px;background:radial-gradient(circle,rgba(123,92,229,0.2) 0%,transparent 70%);top:-100px;left:50%;transform:translateX(-50%);"></div>
+  <div class="glow-blob" style="width:300px;height:300px;background:rgba(224,64,251,0.08);top:30%;right:-60px;"></div>
+  <div class="container" style="position:relative;z-index:1;width:100%;">
+    <div class="breadcrumb fade-up">
+      <a href="index.html">Home</a><span>/</span>
+      <a href="industry-real-estate.html">Industries</a><span>/</span>
+      <span style="color:#C3A7FF;">Esports</span>
+    </div>
+    <div class="badge fade-up" style="margin-bottom:24px;"><span class="dot"></span>Gaming & Competitive Esports Marketing</div>
+    <h1 class="fade-up" style="font-size:clamp(2.5rem,6vw,5rem);font-weight:900;line-height:1.05;letter-spacing:-0.03em;max-width:700px;margin-bottom:20px;">
+      Build the Brand.<br/><span class="grad-text">Land the Sponsors.</span>
+    </h1>
+    <p class="fade-up" style="font-size:clamp(1rem,1.6vw,1.1rem);color:#8888AA;line-height:1.7;max-width:580px;margin-bottom:36px;">Sponsor acquisition, streamer marketing, tournament promotion, and brand development for esports teams that want to monetise — not just compete.</p>
+    <div class="fade-up" style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:56px;">
+      <a href="contact.html" class="btn-primary">Book Intro Call →</a>
+      <a href="index.html#pricing" class="btn-outline">See Pricing</a>
+    </div>
+    <div class="stat-strip fade-up"><div class="stat-strip__item">
+      <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#5A5A7A;margin-bottom:6px;">Audience growth</div>
+      <div style="font-size:2rem;font-weight:900;letter-spacing:-0.04em;" class="grad-text">220%</div>
+      <div style="font-size:11px;color:#5A5A7A;margin-top:4px;">avg. in 90 days</div>
+    </div><div class="stat-strip__item">
+      <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#5A5A7A;margin-bottom:6px;">Brand deals</div>
+      <div style="font-size:2rem;font-weight:900;letter-spacing:-0.04em;" class="grad-text">3</div>
+      <div style="font-size:11px;color:#5A5A7A;margin-top:4px;">avg. per team in year one</div>
+    </div><div class="stat-strip__item">
+      <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#5A5A7A;margin-bottom:6px;">Combined community</div>
+      <div style="font-size:2rem;font-weight:900;letter-spacing:-0.04em;" class="grad-text">50k+</div>
+      <div style="font-size:11px;color:#5A5A7A;margin-top:4px;">built across clients</div>
+    </div></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section style="padding:80px 24px;">
+  <div class="container">
+    <div style="margin-bottom:48px;">
+      <div class="sec-label" style="margin-bottom:12px;">Industry Challenges We Solve</div>
+      <h2 style="font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;letter-spacing:-0.03em;">
+        We Know This Industry.<br/><span class="grad-text-warm">Inside and Out.</span>
+      </h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;">
+      <div class="feature-card fade-up">
+      <div style="font-size:15px;font-weight:700;margin-bottom:8px;color:#fff;">Sponsor Readiness</div>
+      <div style="font-size:13px;color:#8888AA;line-height:1.65;">Sponsors want reach, engagement, and brand safety. We build your team's digital presence to be sponsor-ready — professional profiles, consistent content, and an engaged audience.</div>
+    </div><div class="feature-card fade-up">
+      <div style="font-size:15px;font-weight:700;margin-bottom:8px;color:#fff;">Audience Monetisation</div>
+      <div style="font-size:13px;color:#8888AA;line-height:1.65;">Fans don't automatically become revenue. We build merchandise campaigns, subscription funnels, and partnership deals that turn your audience into income.</div>
+    </div><div class="feature-card fade-up">
+      <div style="font-size:15px;font-weight:700;margin-bottom:8px;color:#fff;">Cross-Platform Presence</div>
+      <div style="font-size:13px;color:#8888AA;line-height:1.65;">Esports audiences live on Twitch, YouTube, TikTok, Discord, and Instagram simultaneously. We manage your presence across all of them.</div>
+    </div><div class="feature-card fade-up">
+      <div style="font-size:15px;font-weight:700;margin-bottom:8px;color:#fff;">Tournament & Event Promotion</div>
+      <div style="font-size:13px;color:#8888AA;line-height:1.65;">Drive registrations, live viewers, and post-event engagement for tournaments and LAN events — locally in Pakistan and internationally.</div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section style="padding:80px 24px;background:#080D1F;">
+  <div class="container">
+    <div style="margin-bottom:40px;">
+      <div class="sec-label" style="margin-bottom:12px;">Services for Esports</div>
+      <h2 style="font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;letter-spacing:-0.03em;">
+        Every Service.<br/><span class="grad-text">One Subscription.</span>
+      </h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;">
+      <div style="background:#11112A;border:1px solid #1E1E4A;border-radius:12px;padding:20px 22px;">
+      <div style="font-size:14px;font-weight:700;color:#C3A7FF;margin-bottom:6px;">Social Media & Content</div>
+      <div style="font-size:13px;color:#8888AA;line-height:1.6;">Highlight reels, team profiles, behind-the-scenes content — built to grow followers and attract sponsors.</div>
+    </div><div style="background:#11112A;border:1px solid #1E1E4A;border-radius:12px;padding:20px 22px;">
+      <div style="font-size:14px;font-weight:700;color:#C3A7FF;margin-bottom:6px;">Sponsor Acquisition Support</div>
+      <div style="font-size:13px;color:#8888AA;line-height:1.6;">Brand decks, outreach strategy, and negotiation support to help your team land and retain brand partnerships.</div>
+    </div><div style="background:#11112A;border:1px solid #1E1E4A;border-radius:12px;padding:20px 22px;">
+      <div style="font-size:14px;font-weight:700;color:#C3A7FF;margin-bottom:6px;">Influencer & Streamer Campaigns</div>
+      <div style="font-size:13px;color:#8888AA;line-height:1.6;">Vetted gaming influencers in Pakistan and internationally to amplify your brand during launches and tournaments.</div>
+    </div><div style="background:#11112A;border:1px solid #1E1E4A;border-radius:12px;padding:20px 22px;">
+      <div style="font-size:14px;font-weight:700;color:#C3A7FF;margin-bottom:6px;">Community Building</div>
+      <div style="font-size:13px;color:#8888AA;line-height:1.6;">Discord setup, Telegram management, and fan engagement campaigns that build a loyal, active community around your team.</div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section style="padding:80px 24px;">
+  <div class="container">
+    <div style="margin-bottom:40px;text-align:center;">
+      <div class="sec-label" style="margin-bottom:12px;">Results</div>
+      <h2 style="font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;letter-spacing:-0.03em;">Numbers That Matter.</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#1E1E4A;border-radius:14px;overflow:hidden;border:1px solid #1E1E4A;margin-bottom:48px;">
+      <div style="text-align:center;background:#11112A;padding:28px 20px;">
+      <div style="font-size:2rem;font-weight:900;letter-spacing:-0.04em;" class="grad-text">220%</div>
+      <div style="font-size:12px;color:#8888AA;margin-top:4px;">Audience Growth</div>
+    </div><div style="text-align:center;background:#11112A;padding:28px 20px;">
+      <div style="font-size:2rem;font-weight:900;letter-spacing:-0.04em;" class="grad-text">3</div>
+      <div style="font-size:12px;color:#8888AA;margin-top:4px;">Brand Deals/yr</div>
+    </div><div style="text-align:center;background:#11112A;padding:28px 20px;">
+      <div style="font-size:2rem;font-weight:900;letter-spacing:-0.04em;" class="grad-text">90</div>
+      <div style="font-size:12px;color:#8888AA;margin-top:4px;">Days to monetise</div>
+    </div><div style="text-align:center;background:#11112A;padding:28px 20px;">
+      <div style="font-size:2rem;font-weight:900;letter-spacing:-0.04em;" class="grad-text">14</div>
+      <div style="font-size:12px;color:#8888AA;margin-top:4px;">Sponsors secured</div>
+    </div>
+    </div>
+
+    <div style="background:#11112A;border:1px solid #1E1E4A;border-radius:16px;padding:32px;">
+      <div style="display:flex;gap:4px;margin-bottom:16px;"><span style="color:#9B6FF0;font-size:18px;">★★★★★</span></div>
+      <p style="font-size:15px;color:#C8C8DD;line-height:1.8;margin-bottom:24px;font-style:italic;">"We had the talent. We had no brand. PulseDevix built our identity, grew our socials to 50k in three months, and helped us land our first three sponsors. This is the only agency you need."</p>
+      <div style="display:flex;align-items:center;gap:14px;padding-top:20px;border-top:1px solid #1E1E4A;">
+        <div style="width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#7B5CE5,#E040FB);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;flex-shrink:0;">UB</div>
+        <div>
+          <div style="font-size:14px;font-weight:700;">Usman Butt</div>
+          <div style="font-size:12px;color:#5A5A7A;">Team Captain — Competitive Esports Team, Islamabad</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section style="padding:60px 24px;">
+  <div class="container">
+    <div class="sec-label" style="margin-bottom:20px;">Other Industries</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;">
+      <a href="industry-web3.html" class="service-link-card">
+      <span style="font-size:14px;font-weight:600;color:#C3A7FF;">Web3</span>
+      <span style="color:#5A5A7A;font-size:18px;">→</span>
+    </a><a href="industry-real-estate.html" class="service-link-card">
+      <span style="font-size:14px;font-weight:600;color:#C3A7FF;">Real Estate</span>
+      <span style="color:#5A5A7A;font-size:18px;">→</span>
+    </a><a href="industry-finance.html" class="service-link-card">
+      <span style="font-size:14px;font-weight:600;color:#C3A7FF;">SRI Finance</span>
+      <span style="color:#5A5A7A;font-size:18px;">→</span>
+    </a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="cta-section">
+  <div class="glow-blob" style="width:600px;height:400px;background:radial-gradient(ellipse,rgba(123,92,229,0.18) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);"></div>
+  <div style="position:relative;z-index:1;max-width:640px;margin:0 auto;">
+    <div class="sec-label" style="margin-bottom:20px;">Ready to Grow?</div>
+    <h2 style="font-size:clamp(2rem,5vw,3.5rem);font-weight:900;letter-spacing:-0.04em;line-height:1.05;margin-bottom:20px;">
+      Book a Call.<br/><span class="grad-text">We'll Handle the Rest.</span>
+    </h2>
+    <p style="font-size:15px;color:#8888AA;line-height:1.7;margin-bottom:32px;">Tell us your goals. We scope the right hours, assign your Esports specialist team, and get started within 48 hours.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:16px;">
+      <a href="contact.html" class="btn-primary" style="font-size:16px;padding:16px 32px;">Book Intro Call →</a>
+      <a href="index.html#pricing" class="btn-outline" style="font-size:16px;padding:16px 32px;">See Pricing</a>
+    </div>
+    <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#5A5A7A;">No contracts · Pause anytime · 48h onboarding</div>
+  </div>
+</section>
+<footer class="pd-footer">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px;">
+      <div>
+        <div style="font-weight:800;font-size:20px;letter-spacing:-0.02em;margin-bottom:16px;">Pulse<span class="grad-text">Devix</span></div>
+        <p style="font-size:13px;color:#5A5A7A;line-height:1.7;max-width:240px;margin-bottom:20px;">Marketing-as-a-Service for Real Estate, SRI Finance, Esports, and Web3. One subscription. Full team.</p>
+        <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#5A5A7A;">Lahore, Pakistan · USA</div>
+      </div>
+      <div>
+        <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#5A5A7A;margin-bottom:16px;">Services</div>
+        <a href="service-paid-ads.html">Paid Advertising</a>
+        <a href="service-seo.html">SEO</a>
+        <a href="service-social.html">Social Media</a>
+        <a href="service-content.html">Content</a>
+        <a href="service-influencer.html">Influencer</a>
+        <a href="service-web3.html">Web3 Marketing</a>
+        <a href="service-cro.html">CRO</a>
+        <a href="service-branding.html">Branding</a>
+      </div>
+      <div>
+        <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#5A5A7A;margin-bottom:16px;">Industries</div>
+        <a href="industry-real-estate.html">Real Estate</a>
+        <a href="industry-finance.html">SRI Finance</a>
+        <a href="industry-esports.html">Esports</a>
+        <a href="industry-web3.html">Web3</a>
+      </div>
+      <div>
+        <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#5A5A7A;margin-bottom:16px;">Company</div>
+        <a href="about.html">About Us</a>
+        <a href="team.html">Our Team</a>
+        <a href="index.html#cases">Case Studies</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div>
+        <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#5A5A7A;margin-bottom:16px;">Contact</div>
+        <a href="contact.html">Book Intro Call</a>
+        <a href="mailto:hello@pulsedevix.com">hello@pulsedevix.com</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">Instagram</a>
+      </div>
+    </div>
+    <div style="border-top:1px solid #1E1E4A;padding-top:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+      <div style="font-size:12px;color:#5A5A7A;">© 2026 PulseDevix. All rights reserved.</div>
+      <div style="display:flex;gap:20px;">
+        <a href="#" style="font-size:12px;color:#5A5A7A;text-decoration:none;">Privacy Policy</a>
+        <a href="#" style="font-size:12px;color:#5A5A7A;text-decoration:none;">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script>
+var observer=new IntersectionObserver(function(e){e.forEach(function(i){if(i.isIntersecting)i.target.classList.add('visible');});},{threshold:0.1});
+document.querySelectorAll('.fade-up').forEach(function(el){observer.observe(el);});
+setTimeout(function(){document.querySelectorAll('.fade-up').forEach(function(el,i){setTimeout(function(){el.classList.add('visible');},i*100);});},100);
+</script>
+</body>
+</html>
