@@ -189,36 +189,38 @@ html{scroll-behavior:smooth;}
 
 /* ── Mega Nav ── */
 .pd-nav{position:sticky;top:0;z-index:1000;backdrop-filter:blur(20px);background:rgba(11,11,26,0.92);border-bottom:1px solid #1E1E4A;}
-.pd-nav__inner{max-width:1200px;margin:0 auto;padding:0 24px;height:68px;display:flex;align-items:center;justify-content:space-between;}
-.pd-nav__logo{font-weight:800;font-size:19px;letter-spacing:-0.02em;text-decoration:none;color:#fff;display:flex;align-items:center;gap:10px;}
+.pd-nav__inner{max-width:1200px;margin:0 auto;padding:0 24px;height:68px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.pd-nav__logo{font-weight:800;font-size:19px;letter-spacing:-0.02em;text-decoration:none;color:#fff;display:flex;align-items:center;gap:10px;flex-shrink:0;}
 .pd-nav__logo span{background:linear-gradient(135deg,#9B6FF0,#C3A7FF,#E040FB);background-size:200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:gradShift 6s ease infinite;}
-.pd-nav__links{display:flex;gap:4px;align-items:center;}
+.pd-nav__links{display:flex;gap:2px;align-items:center;flex:1;justify-content:center;}
 .nav-item{position:relative;}
-.nav-link{color:#8888AA;font-size:14px;font-weight:500;text-decoration:none;padding:8px 14px;border-radius:8px;display:flex;align-items:center;gap:5px;transition:all .2s;cursor:pointer;background:transparent;border:none;font-family:'Inter',sans-serif;}
+.nav-link{color:#8888AA;font-size:14px;font-weight:500;text-decoration:none;padding:8px 12px;border-radius:8px;display:flex;align-items:center;gap:5px;transition:all .2s;cursor:pointer;background:transparent;border:none;font-family:'Inter',sans-serif;white-space:nowrap;}
 .nav-link:hover,.nav-link.active{color:#fff;background:rgba(123,92,229,0.12);}
-.nav-link svg{transition:transform .2s;}
-.nav-item:hover .nav-link svg{transform:rotate(180deg);}
-.nav-link.active{color:#C3A7FF;}
-
-/* ── Dropdown panel ── */
-.nav-dropdown{position:absolute;top:calc(100% + 12px);left:50%;transform:translateX(-50%);background:#0F0F2A;border:1px solid #1E1E4A;border-radius:16px;padding:20px;min-width:560px;opacity:0;visibility:hidden;transform:translateX(-50%) translateY(-8px);transition:all .25s cubic-bezier(.16,1,.3,1);box-shadow:0 24px 80px rgba(0,0,0,0.5),0 0 0 1px rgba(123,92,229,0.1);}
-.nav-item:hover .nav-dropdown{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);}
-.nav-dropdown::before{content:'';position:absolute;top:-6px;left:50%;transform:translateX(-50%);width:12px;height:12px;background:#0F0F2A;border-left:1px solid #1E1E4A;border-top:1px solid #1E1E4A;transform:translateX(-50%) rotate(45deg);}
-.dropdown-grid{display:grid;gap:6px;}
+.nav-link svg{transition:transform .2s;color:#8888AA;}
+.nav-item:hover>.nav-link svg{transform:rotate(180deg);}
+.nav-dropdown{position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%);background:#0F0F28;border:1px solid #2A2A4A;border-radius:16px;padding:20px;opacity:0;visibility:hidden;transition:all .22s cubic-bezier(.16,1,.3,1);box-shadow:0 24px 80px rgba(0,0,0,0.6),0 0 0 1px rgba(123,92,229,0.08);pointer-events:none;transform:translateX(-50%) translateY(-6px);}
+.nav-item:hover>.nav-dropdown{opacity:1;visibility:visible;pointer-events:all;transform:translateX(-50%) translateY(0);}
+.dropdown-grid{display:grid;gap:4px;}
 .dropdown-grid-2{grid-template-columns:1fr 1fr;}
-.dropdown-grid-3{grid-template-columns:1fr 1fr 1fr;}
-.dropdown-section-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#5A5A7A;margin-bottom:8px;padding-bottom:6px;border-bottom:1px solid #1E1E4A;}
-.dropdown-link{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:8px;text-decoration:none;transition:all .2s;color:#C8C8DD;}
-.dropdown-link:hover{background:rgba(123,92,229,0.12);color:#fff;}
-.dropdown-link:hover .dl-icon{border-color:rgba(123,92,229,0.6);background:rgba(123,92,229,0.2);}
-.dl-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:rgba(255,255,255,0.04);border:1px solid #2A2A4A;transition:all .2s;}
-.dl-title{font-size:13px;font-weight:600;color:#fff;margin-bottom:1px;}
+.dropdown-section-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#5A5A7A;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid #1E1E4A;}
+.dropdown-link{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:8px;text-decoration:none;transition:all .18s;color:#C8C8DD;}
+.dropdown-link:hover{background:rgba(123,92,229,0.1);color:#fff;}
+.dl-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:rgba(255,255,255,0.04);border:1px solid #2A2A4A;transition:all .18s;}
+.dropdown-link:hover .dl-icon{background:rgba(123,92,229,0.15);border-color:rgba(123,92,229,0.4);}
+.dl-title{font-size:13px;font-weight:600;color:#fff;margin-bottom:1px;line-height:1.3;}
 .dl-sub{font-size:11px;color:#5A5A7A;line-height:1.3;}
-
-/* ── Mobile nav toggle (simple) ── */
-.nav-toggle{display:none;background:transparent;border:1px solid #2A2A4A;border-radius:8px;padding:8px;cursor:pointer;color:#8888AA;}
+.nav-toggle{display:none;background:transparent;border:1px solid #2A2A4A;border-radius:8px;padding:7px;cursor:pointer;color:#8888AA;align-items:center;justify-content:center;}
 @media(max-width:900px){
-  .pd-nav__links{display:none;}
+  .pd-nav__links{display:none;position:fixed;top:68px;left:0;right:0;bottom:0;background:#0B0B1A;flex-direction:column;padding:20px 16px;overflow-y:auto;gap:4px;z-index:999;justify-content:flex-start;}
+  .pd-nav__links.open{display:flex;}
+  .nav-item{width:100%;}
+  .nav-link{width:100%;justify-content:space-between;box-sizing:border-box;}
+  .nav-dropdown{position:static;transform:none!important;visibility:visible!important;opacity:1!important;min-width:100%!important;border:none;background:rgba(255,255,255,0.03);border-radius:8px;margin-top:4px;padding:10px;display:none;pointer-events:all;box-shadow:none;}
+  .nav-item.mob-open>.nav-dropdown{display:block;}
+  .nav-item.mob-open>.nav-link svg{transform:rotate(180deg);}
+  .nav-toggle{display:flex;}
+  .dropdown-grid-2{grid-template-columns:1fr!important;}
+}
   .nav-toggle{display:flex;align-items:center;justify-content:center;}
 }
 
@@ -617,89 +619,44 @@ html{scroll-behavior:smooth;}
 <nav class="pd-nav">
   <div class="pd-nav__inner">
     <a href="index.html" class="pd-nav__logo">
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" style="flex-shrink:0;">
+        <defs><linearGradient id="nl" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#7B5CE5"/><stop offset="100%" stop-color="#E040FB"/></linearGradient></defs>
         <rect x="1" y="10" width="3" height="10" rx="1.5" fill="url(#nl)" opacity="0.35"/>
         <rect x="6" y="6" width="3" height="18" rx="1.5" fill="url(#nl)" opacity="0.55"/>
         <rect x="11" y="2" width="3" height="24" rx="1.5" fill="url(#nl)"/>
         <rect x="16" y="7" width="3" height="16" rx="1.5" fill="url(#nl)" opacity="0.65"/>
         <rect x="21" y="12" width="3" height="8" rx="1.5" fill="url(#nl)" opacity="0.35"/>
-        <defs><linearGradient id="nl" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#7B5CE5"/><stop offset="100%" stop-color="#E040FB"/></linearGradient></defs>
       </svg>
       Pulse<span>Devix</span>
     </a>
 
     <div class="pd-nav__links">
-
-      <!-- Services dropdown -->
       <div class="nav-item">
-        <button class="nav-link">
-          Services
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="#8888AA" stroke-width="1.5" stroke-linecap="round"/></svg>
-        </button>
-        <div class="nav-dropdown" style="min-width:600px;">
+        <button class="nav-link">Services <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+        <div class="nav-dropdown" style="min-width:580px;left:0;transform:none;">
           <div class="dropdown-section-label">All Services</div>
           <div class="dropdown-grid dropdown-grid-2">
-            <a href="service-paid-ads.html" class="dropdown-link">
-              <div class="dl-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="5" width="5" height="5" rx="1" stroke="#9B6FF0" stroke-width="1.2"/><rect x="9" y="1" width="5" height="5" rx="1" stroke="#E040FB" stroke-width="1.2"/><rect x="1" y="10" width="5" height="5" rx="1" stroke="#9B6FF0" stroke-width="1.2" opacity=".5"/><rect x="9" y="10" width="5" height="5" rx="1" stroke="#E040FB" stroke-width="1.2" opacity=".5"/></svg></div>
-              <div><div class="dl-title">Paid Advertising</div><div class="dl-sub">Meta, Google, TikTok</div></div>
-            </a>
-            <a href="service-seo.html" class="dropdown-link">
-              <div class="dl-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="#38BDF8" stroke-width="1.2"/><path d="M8 2c0 0-2 2.5-2 6s2 6 2 6" stroke="#38BDF8" stroke-width="1.2" opacity=".6"/><path d="M2 8h12" stroke="#38BDF8" stroke-width="1.2" opacity=".6"/></svg></div>
-              <div><div class="dl-title">SEO</div><div class="dl-sub">Technical, local, content</div></div>
-            </a>
-            <a href="service-social.html" class="dropdown-link">
-              <div class="dl-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 12l3-4 3 3 2-4 3 5" stroke="#E040FB" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="13" cy="3" r="1.5" fill="#E040FB" opacity=".6"/></svg></div>
-              <div><div class="dl-title">Social Media</div><div class="dl-sub">7 platforms managed</div></div>
-            </a>
-            <a href="service-content.html" class="dropdown-link">
-              <div class="dl-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 4h12M2 7h8M2 10h10M2 13h6" stroke="#34D399" stroke-width="1.2" stroke-linecap="round"/></svg></div>
-              <div><div class="dl-title">Content Marketing</div><div class="dl-sub">Blogs, scripts, copy</div></div>
-            </a>
-            <a href="service-influencer.html" class="dropdown-link">
-              <div class="dl-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2l1.5 4H14l-3.5 2.5 1.5 4L8 10 4 12.5l1.5-4L2 6h4.5L8 2z" stroke="#FBBF24" stroke-width="1.2" stroke-linejoin="round"/></svg></div>
-              <div><div class="dl-title">Influencer Marketing</div><div class="dl-sub">Vetted creators, ROI-tracked</div></div>
-            </a>
-            <a href="service-web3.html" class="dropdown-link">
-              <div class="dl-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1l5 3v4c0 4-2.5 5.5-5 6-2.5-.5-5-2-5-6V4l5-3z" stroke="#FB7185" stroke-width="1.2" stroke-linejoin="round"/></svg></div>
-              <div><div class="dl-title">Web3 Marketing</div><div class="dl-sub">Token launches, NFT, DAO</div></div>
-            </a>
-            <a href="service-cro.html" class="dropdown-link">
-              <div class="dl-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 11l3-4 3 2.5 2-4 3 5.5" stroke="#A78BFA" stroke-width="1.2" stroke-linecap="round"/><rect x="1" y="1" width="14" height="14" rx="2" stroke="#A78BFA" stroke-width="1.2" opacity=".3"/></svg></div>
-              <div><div class="dl-title">CRO</div><div class="dl-sub">A/B testing, funnel fixes</div></div>
-            </a>
-            <a href="service-branding.html" class="dropdown-link">
-              <div class="dl-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="9" width="12" height="5" rx="1.5" stroke="#22D3EE" stroke-width="1.2"/><path d="M5 9V6a3 3 0 016 0v3" stroke="#22D3EE" stroke-width="1.2"/><circle cx="8" cy="11.5" r="1" fill="#22D3EE" opacity=".6"/></svg></div>
-              <div><div class="dl-title">Branding & Design</div><div class="dl-sub">Identity, UI/UX, assets</div></div>
-            </a>
+            <a href="service-paid-ads.html" class="dropdown-link"><div class="dl-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="5" width="5" height="5" rx="1" stroke="#9B6FF0" stroke-width="1.2"/><rect x="9" y="1" width="5" height="5" rx="1" stroke="#E040FB" stroke-width="1.2"/><rect x="1" y="10" width="5" height="5" rx="1" stroke="#9B6FF0" stroke-width="1.2" opacity=".5"/><rect x="9" y="10" width="5" height="5" rx="1" stroke="#E040FB" stroke-width="1.2" opacity=".5"/></svg></div><div><div class="dl-title">Paid Advertising</div><div class="dl-sub">Meta, Google, TikTok</div></div></a>
+            <a href="service-seo.html" class="dropdown-link"><div class="dl-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="#38BDF8" stroke-width="1.2"/><path d="M8 2c0 0-2 2.5-2 6s2 6 2 6" stroke="#38BDF8" stroke-width="1.2" opacity=".6"/><path d="M2 8h12" stroke="#38BDF8" stroke-width="1.2" opacity=".6"/></svg></div><div><div class="dl-title">SEO & GEO</div><div class="dl-sub">Technical, local, AI search</div></div></a>
+            <a href="service-social.html" class="dropdown-link"><div class="dl-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 12l3-4 3 3 2-4 3 5" stroke="#E040FB" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><div class="dl-title">Social Media</div><div class="dl-sub">7 platforms managed</div></div></a>
+            <a href="service-content.html" class="dropdown-link"><div class="dl-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 4h12M2 7h8M2 10h10M2 13h6" stroke="#34D399" stroke-width="1.2" stroke-linecap="round"/></svg></div><div><div class="dl-title">Content Marketing</div><div class="dl-sub">Blogs, scripts, copy</div></div></a>
+            <a href="service-influencer.html" class="dropdown-link"><div class="dl-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2l1.5 4H14l-3.5 2.5 1.5 4L8 10 4 12.5l1.5-4L2 6h4.5L8 2z" stroke="#FBBF24" stroke-width="1.2" stroke-linejoin="round"/></svg></div><div><div class="dl-title">Influencer Marketing</div><div class="dl-sub">Vetted creators, ROI-tracked</div></div></a>
+            <a href="service-web3.html" class="dropdown-link"><div class="dl-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1l5 3v4c0 4-2.5 5.5-5 6-2.5-.5-5-2-5-6V4l5-3z" stroke="#FB7185" stroke-width="1.2" stroke-linejoin="round"/></svg></div><div><div class="dl-title">Web3 Marketing</div><div class="dl-sub">Token launches, NFT, DAO</div></div></a>
+            <a href="service-cro.html" class="dropdown-link"><div class="dl-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 11l3-4 3 2.5 2-4 3 5.5" stroke="#A78BFA" stroke-width="1.2" stroke-linecap="round"/></svg></div><div><div class="dl-title">CRO</div><div class="dl-sub">A/B testing, funnel fixes</div></div></a>
+            <a href="service-branding.html" class="dropdown-link"><div class="dl-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="9" width="12" height="5" rx="1.5" stroke="#22D3EE" stroke-width="1.2"/><path d="M5 9V6a3 3 0 016 0v3" stroke="#22D3EE" stroke-width="1.2"/></svg></div><div><div class="dl-title">Branding & Design</div><div class="dl-sub">Identity, UI/UX, assets</div></div></a>
           </div>
         </div>
       </div>
 
-      <!-- Industries dropdown -->
       <div class="nav-item">
-        <button class="nav-link">
-          Industries
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="#8888AA" stroke-width="1.5" stroke-linecap="round"/></svg>
-        </button>
-        <div class="nav-dropdown" style="min-width:420px;">
+        <button class="nav-link">Industries <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+        <div class="nav-dropdown" style="min-width:400px;">
           <div class="dropdown-section-label">Industry Verticals</div>
           <div class="dropdown-grid dropdown-grid-2">
-            <a href="industry-real-estate.html" class="dropdown-link">
-              <div class="dl-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="7" width="12" height="7" rx="1" stroke="#9B6FF0" stroke-width="1.2"/><path d="M6 7V5a2 2 0 014 0v2" stroke="#9B6FF0" stroke-width="1.2"/><path d="M5 7V4.5a3 3 0 016 0V7" stroke="#9B6FF0" stroke-width="1.2" opacity=".4"/></svg></div>
-              <div><div class="dl-title">Real Estate</div><div class="dl-sub">Property & development</div></div>
-            </a>
-            <a href="industry-finance.html" class="dropdown-link">
-              <div class="dl-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2l6 3.5v3C14 12 11.5 14 8 15c-3.5-1-6-3-6-6.5V5.5L8 2z" stroke="#34D399" stroke-width="1.2" stroke-linejoin="round"/><path d="M6 8l1.5 1.5L10 6" stroke="#34D399" stroke-width="1.2" stroke-linecap="round"/></svg></div>
-              <div><div class="dl-title">SRI Finance</div><div class="dl-sub">Ethical & responsible</div></div>
-            </a>
-            <a href="industry-esports.html" class="dropdown-link">
-              <div class="dl-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="4" width="12" height="9" rx="1.5" stroke="#FBBF24" stroke-width="1.2"/><path d="M7 6.5v4M5 8.5h4" stroke="#FBBF24" stroke-width="1.2" stroke-linecap="round"/><circle cx="10.5" cy="8.5" r="1" fill="#FBBF24" opacity=".6"/></svg></div>
-              <div><div class="dl-title">Esports</div><div class="dl-sub">Gaming & competitive</div></div>
-            </a>
-            <a href="industry-web3.html" class="dropdown-link">
-              <div class="dl-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1l6 3.5-6 3.5L2 4.5 8 1z" stroke="#E040FB" stroke-width="1.2" stroke-linejoin="round"/><path d="M2 4.5v4L8 12v-4" stroke="#E040FB" stroke-width="1.2" stroke-linejoin="round"/><path d="M14 4.5v4L8 12" stroke="#E040FB" stroke-width="1.2" stroke-linejoin="round" opacity=".5"/></svg></div>
-              <div><div class="dl-title">Web3 & Crypto</div><div class="dl-sub">Token, NFT, DeFi</div></div>
-            </a>
+            <a href="industry-real-estate.html" class="dropdown-link"><div class="dl-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="7" width="12" height="7" rx="1" stroke="#9B6FF0" stroke-width="1.2"/><path d="M5 7V4.5a3 3 0 016 0V7" stroke="#9B6FF0" stroke-width="1.2" opacity=".5"/></svg></div><div><div class="dl-title">Real Estate</div><div class="dl-sub">Property & development</div></div></a>
+            <a href="industry-finance.html" class="dropdown-link"><div class="dl-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2l6 3.5v3C14 12 11.5 14 8 15c-3.5-1-6-3-6-6.5V5.5L8 2z" stroke="#34D399" stroke-width="1.2" stroke-linejoin="round"/></svg></div><div><div class="dl-title">SRI Finance</div><div class="dl-sub">Ethical & responsible</div></div></a>
+            <a href="industry-esports.html" class="dropdown-link"><div class="dl-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="4" width="12" height="9" rx="1.5" stroke="#FBBF24" stroke-width="1.2"/><path d="M7 6.5v4M5 8.5h4" stroke="#FBBF24" stroke-width="1.2" stroke-linecap="round"/></svg></div><div><div class="dl-title">Esports</div><div class="dl-sub">Gaming & competitive</div></div></a>
+            <a href="industry-web3.html" class="dropdown-link"><div class="dl-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1l6 3.5-6 3.5L2 4.5 8 1z" stroke="#E040FB" stroke-width="1.2" stroke-linejoin="round"/><path d="M2 4.5v4L8 12v-4" stroke="#E040FB" stroke-width="1.2" stroke-linejoin="round"/></svg></div><div><div class="dl-title">Web3 & Crypto</div><div class="dl-sub">Token, NFT, DeFi</div></div></a>
           </div>
         </div>
       </div>
@@ -710,6 +667,7 @@ html{scroll-behavior:smooth;}
     </div>
 
     <div style="display:flex;align-items:center;gap:10px;">
+      <button class="nav-toggle" aria-label="Menu"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 5h14M3 10h14M3 15h14" stroke="#8888AA" stroke-width="1.5" stroke-linecap="round"/></svg></button>
       <a href="contact.html" class="btn-primary btn-primary-sm">Book Intro Call</a>
     </div>
   </div>
@@ -1008,14 +966,45 @@ document.querySelectorAll('.feature-card,.service-card,.testi-card,.case-card').
 });
 </script>
 
+
+
 <script>
-/* ── Nav active page highlight ── */
 (function(){
+  /* Active page */
   var path=window.location.pathname.split('/').pop()||'index.html';
-  document.querySelectorAll('.nav-link[href]').forEach(function(a){
+  document.querySelectorAll('a.nav-link').forEach(function(a){
     if(a.getAttribute('href')===path)a.classList.add('active');
+  });
+  /* Mobile toggle */
+  var toggle=document.querySelector('.nav-toggle');
+  var links=document.querySelector('.pd-nav__links');
+  if(toggle&&links){
+    toggle.addEventListener('click',function(){
+      links.classList.toggle('open');
+      toggle.innerHTML=links.classList.contains('open')
+        ?'<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 4l12 12M16 4L4 16" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg>'
+        :'<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 5h14M3 10h14M3 15h14" stroke="#8888AA" stroke-width="1.5" stroke-linecap="round"/></svg>';
+    });
+  }
+  /* Mobile dropdown items */
+  document.querySelectorAll('.nav-item').forEach(function(item){
+    var btn=item.querySelector('button.nav-link');
+    if(btn){
+      btn.addEventListener('click',function(){
+        if(window.innerWidth<=900){
+          item.classList.toggle('mob-open');
+        }
+      });
+    }
+  });
+  /* Close on link click mobile */
+  document.querySelectorAll('.dropdown-link').forEach(function(a){
+    a.addEventListener('click',function(){
+      if(links)links.classList.remove('open');
+    });
   });
 })();
 </script>
+
 </body>
 </html>
