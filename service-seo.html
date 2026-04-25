@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<link rel="icon" type="image/x-icon" href="favicon.ico"/>
+<link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+<link rel="apple-touch-icon" href="favicon-180.png"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>SEO Agency — PulseDevix</title>
+<meta name="description" content="Technical, local, and content SEO for competitive industries. We rank brands in Real Estate, Finance, Esports, and Web3."/>
+<style>/* ═══════════════════════════════════════
+   PULSEDEVIX — Shared Design System
+   Colors: NinjaPromo purple system
+   Font: Inter + DM Mono
+═══════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&display=swap');
+
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:#0B0B1A;font-family:'Inter',sans-serif;color:#fff;overflow-x:hidden;}
+
+/* ── Tokens ── */
+:root{
+  --bg:#0B0B1A; --surface:#11112A; --card:#16163A;
+  --border:#1E1E4A; --purple:#7B5CE5; --violet:#9B6FF0;
+  --lavender:#C3A7FF; --pink:#E040FB; --muted:#8888AA; --dim:#5A5A7A;
+}
+
+/* ── Utilities ── */
+/* grad-text replaced */
+/* grad-text-warm replaced */
+.glow-blob{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;}
+.dot-grid{background-image:radial-gradient(circle,rgba(123,92,229,0.15) 1px,transparent 1px);background-size:32px 32px;}
+.divider{height:1px;background:linear-gradient(90deg,transparent,#1E1E4A,transparent);margin:0;}
+.sec-label{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#9B6FF0;}
+.container{max-width:1100px;margin:0 auto;padding:0 24px;}
+
+/* ── Nav ── */
+.pd-nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(16px);background:rgba(11,11,26,0.9);border-bottom:1px solid #1E1E4A;}
+.pd-nav__inner{max-width:1200px;margin:0 auto;padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between;}
+.pd-nav__logo{font-weight:800;font-size:18px;letter-spacing:-0.02em;text-decoration:none;color:#fff;}
+.pd-nav__links{display:flex;gap:28px;align-items:center;}
+.pd-nav__links a{color:#8888AA;font-size:14px;font-weight:500;text-decoration:none;transition:color .2s;}
+.pd-nav__links a:hover{color:#fff;}
+.pd-nav__links a.active{color:#fff;}
+
+/* ── Buttons ── */
+.btn-primary{background:linear-gradient(135deg,#7B5CE5,#9B6FF0);color:#fff;font-weight:700;border:none;border-radius:8px;padding:14px 28px;font-size:15px;cursor:pointer;transition:opacity .2s,transform .15s;display:inline-flex;align-items:center;gap:8px;text-decoration:none;}
+.btn-primary:hover{opacity:.88;transform:translateY(-1px);}
+.btn-primary-sm{padding:10px 20px;font-size:14px;}
+.btn-outline{background:transparent;color:#C3A7FF;font-weight:600;border:1px solid #1E1E4A;border-radius:8px;padding:14px 28px;font-size:15px;cursor:pointer;transition:border-color .2s,color .2s;display:inline-flex;align-items:center;gap:8px;text-decoration:none;}
+.btn-outline:hover{border-color:#9B6FF0;color:#fff;}
+.btn-ghost{background:transparent;color:#8888AA;border:1px solid #1E1E4A;border-radius:8px;padding:10px 20px;font-size:13px;font-weight:500;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:all .2s;}
+.btn-ghost:hover{border-color:#7B5CE5;color:#C3A7FF;}
+
+/* ── Badge ── */
+.badge{display:inline-flex;align-items:center;gap:6px;background:rgba(123,92,229,0.15);border:1px solid rgba(123,92,229,0.35);border-radius:100px;padding:5px 14px;font-size:12px;font-weight:500;color:#C3A7FF;font-family:'DM Mono',monospace;letter-spacing:0.06em;}
+.badge .dot{width:7px;height:7px;border-radius:50%;background:#7B5CE5;animation:pulseDot 2s ease-in-out infinite;}
+@keyframes pulseDot{0%,100%{opacity:.5}50%{opacity:1}}
+
+/* ── Cards ── */
+.feature-card{background:#11112A;border:1px solid #1E1E4A;border-radius:14px;padding:24px;transition:border-color .25s,transform .2s;}
+.feature-card:hover{border-color:rgba(123,92,229,0.5);transform:translateY(-3px);}
+.stat-card{background:#11112A;border:1px solid #1E1E4A;border-radius:12px;padding:20px 24px;}
+.process-card{background:#11112A;border:1px solid #1E1E4A;border-radius:14px;padding:24px;display:flex;gap:16px;}
+.service-link-card{background:#11112A;border:1px solid #1E1E4A;border-radius:12px;padding:18px 20px;text-decoration:none;display:flex;align-items:center;justify-content:space-between;transition:all .2s;}
+.service-link-card:hover{border-color:#7B5CE5;transform:translateX(4px);}
+
+/* ── Service hero ── */
+.svc-hero{position:relative;min-height:72vh;display:flex;align-items:center;padding:80px 24px 60px;overflow:hidden;}
+
+/* ── Stat strip ── */
+.stat-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#1E1E4A;border-radius:14px;overflow:hidden;border:1px solid #1E1E4A;}
+.stat-strip__item{background:#11112A;padding:20px 24px;}
+
+/* ── Process step number ── */
+.step-circle{width:40px;height:40px;border-radius:50%;background:rgba(123,92,229,0.15);border:1px solid rgba(123,92,229,0.4);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;color:#C3A7FF;flex-shrink:0;}
+
+/* ── Icon box ── */
+.icon-box{width:48px;height:48px;border-radius:12px;background:rgba(123,92,229,0.15);border:1px solid rgba(123,92,229,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+
+/* ── Breadcrumb ── */
+.breadcrumb{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#5A5A7A;display:flex;align-items:center;gap:8px;margin-bottom:20px;}
+.breadcrumb a{color:#5A5A7A;text-decoration:none;transition:color .2s;}
+.breadcrumb a:hover{color:#9B6FF0;}
+.breadcrumb span{color:#3A3A5A;}
+
+/* ── CTA section ── */
+.cta-section{padding:100px 24px;text-align:center;position:relative;overflow:hidden;}
+
+/* ── Footer ── */
+.pd-footer{padding:60px 24px 32px;background:#080810;}
+.pd-footer a{color:#5A5A7A;font-size:13px;text-decoration:none;transition:color .2s;display:block;margin-bottom:8px;}
+.pd-footer a:hover{color:#C3A7FF;}
+
+/* ── Feat item ── */
+.feat-item{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:#C8C8DD;line-height:1.5;}
+.feat-check{width:18px;height:18px;border-radius:50%;flex-shrink:0;margin-top:1px;background:rgba(123,92,229,0.2);border:1px solid rgba(123,92,229,0.5);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#9B6FF0;}
+
+/* ── Noise ── */
+body::after{content:'';position:fixed;inset:0;z-index:100;pointer-events:none;opacity:.025;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+
+/* ── Animations ── */
+.fade-up{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease;}
+.fade-up.visible{opacity:1;transform:translateY(0);}
+
+/* ── Animated gradient text ── */
+.grad-text{background:linear-gradient(135deg,#9B6FF0,#C3A7FF,#E040FB,#9B6FF0);background-size:300% 300%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:gradShift 6s ease infinite;}
+.grad-text-warm{background:linear-gradient(135deg,#7B5CE5,#9B6FF0,#E040FB,#7B5CE5);background-size:300% 300%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:gradShift 6s ease infinite;}
+@keyframes gradShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+
+/* ── Floating blobs ── */
+.glow-blob{animation:blobFloat 8s ease-in-out infinite;}
+.glow-blob:nth-child(2){animation-duration:11s;animation-delay:-3s;}
+.glow-blob:nth-child(3){animation-duration:14s;animation-delay:-6s;}
+@keyframes blobFloat{0%,100%{transform:translateY(0) scale(1)}33%{transform:translateY(-20px) scale(1.05)}66%{transform:translateY(10px) scale(0.97)}}
+
+/* ── Page load fade in ── */
+body{animation:pageIn 0.5s ease both;}
+@keyframes pageIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── Typed text cursor ── */
+.typed-cursor{display:inline-block;width:3px;height:1em;background:linear-gradient(135deg,#9B6FF0,#E040FB);margin-left:4px;vertical-align:middle;animation:blink 1s step-end infinite;border-radius:2px;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+
+/* ── Gradient border cards ── */
+.feature-card{position:relative;background:#11112A;border:1px solid #1E1E4A;border-radius:14px;padding:24px;transition:all .3s ease;overflow:hidden;}
+.feature-card::before{content:'';position:absolute;inset:0;border-radius:14px;padding:1.5px;background:linear-gradient(135deg,#7B5CE5,#E040FB,#7B5CE5);background-size:200% 200%;-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .3s ease;animation:gradShift 3s ease infinite;}
+.feature-card:hover::before{opacity:1;}
+.feature-card:hover{transform:translateY(-6px);box-shadow:0 20px 60px rgba(123,92,229,0.2);}
+
+/* ── Colourful icon boxes ── */
+.icon-box-purple{background:rgba(123,92,229,0.15);border:1px solid rgba(123,92,229,0.4);}
+.icon-box-pink{background:rgba(224,64,251,0.12);border:1px solid rgba(224,64,251,0.3);}
+.icon-box-blue{background:rgba(56,139,255,0.12);border:1px solid rgba(56,139,255,0.3);}
+.icon-box-teal{background:rgba(29,158,117,0.12);border:1px solid rgba(29,158,117,0.3);}
+.icon-box-amber{background:rgba(255,171,0,0.12);border:1px solid rgba(255,171,0,0.3);}
+.icon-box-coral{background:rgba(255,90,90,0.12);border:1px solid rgba(255,90,90,0.3);}
+
+/* ── Counter animation ── */
+.counter{display:inline-block;transition:all .1s;}
+
+/* ── Stat card glow ── */
+.stat-strip__item{transition:all .3s ease;}
+.stat-strip__item:hover{background:#1A1A3A;box-shadow:inset 0 0 30px rgba(123,92,229,0.1);}
+
+/* ── Button pulse ── */
+.btn-primary{position:relative;overflow:hidden;}
+.btn-primary::after{content:'';position:absolute;inset:0;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,0.15) 50%,transparent 60%);transform:translateX(-100%);transition:transform .5s ease;}
+.btn-primary:hover::after{transform:translateX(100%);}
+
+/* ── Service card coloured icons ── */
+.svc-icon-1{background:rgba(123,92,229,0.15);border:1px solid rgba(123,92,229,0.4);}
+.svc-icon-2{background:rgba(56,189,248,0.12);border:1px solid rgba(56,189,248,0.35);}
+.svc-icon-3{background:rgba(224,64,251,0.12);border:1px solid rgba(224,64,251,0.3);}
+.svc-icon-4{background:rgba(52,211,153,0.12);border:1px solid rgba(52,211,153,0.3);}
+.svc-icon-5{background:rgba(251,146,60,0.12);border:1px solid rgba(251,146,60,0.3);}
+.svc-icon-6{background:rgba(248,113,113,0.12);border:1px solid rgba(248,113,113,0.3);}
+.svc-icon-7{background:rgba(167,139,250,0.12);border:1px solid rgba(167,139,250,0.3);}
+.svc-icon-8{background:rgba(34,211,238,0.12);border:1px solid rgba(34,211,238,0.3);}
+
+/* ── Industry card gradient border ── */
+.industry-card{position:relative;overflow:hidden;transition:all .3s ease;}
+.industry-card::after{content:'';position:absolute;inset:0;border-radius:16px;padding:1.5px;background:linear-gradient(135deg,#7B5CE5,#E040FB);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .3s;}
+.industry-card:hover::after{opacity:1;}
+.industry-card:hover{transform:translateY(-6px);box-shadow:0 24px 60px rgba(123,92,229,0.18);}
+
+/* ── Scroll reveal ── */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.reveal-left{opacity:0;transform:translateX(-30px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}
+.reveal-left.visible{opacity:1;transform:translateX(0);}
+.reveal-right{opacity:0;transform:translateX(30px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}
+.reveal-right.visible{opacity:1;transform:translateX(0);}
+
+/* ── Smooth scroll ── */
+html{scroll-behavior:smooth;}
+
+/* ── Ticker hover pause ── */
+.ticker-wrap:hover .ticker-track{animation-play-state:paused;}
+
+/* ── Process card hover ── */
+.process-card{transition:all .3s ease;}
+.process-card:hover{border-color:rgba(123,92,229,0.5);transform:translateY(-4px);box-shadow:0 16px 40px rgba(123,92,229,0.15);}
+
+/* ── Step circle pulse ── */
+.step-circle{animation:stepPulse 3s ease-in-out infinite;}
+@keyframes stepPulse{0%,100%{box-shadow:0 0 0 0 rgba(123,92,229,0)}50%{box-shadow:0 0 0 8px rgba(123,92,229,0.15)}}
+
+
+/* ── Mega Nav ── */
+.pd-nav{position:sticky;top:0;z-index:1000;backdrop-filter:blur(20px);background:rgba(11,11,26,0.92);border-bottom:1px solid #1E1E4A;}
+.pd-nav__inner{max-width:1200px;margin:0 auto;padding:0 24px;height:68px;display:flex;align-items:center;justify-content:space-between;}
+.pd-nav__logo{font-weight:800;font-size:19px;letter-spacing:-0.02em;text-decoration:none;color:#fff;display:flex;align-items:center;gap:10px;}
+.pd-nav__logo span{background:linear-gradient(135deg,#9B6FF0,#C3A7FF,#E040FB);background-size:200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:gradShift 6s ease infinite;}
+.pd-nav__links{display:flex;gap:4px;align-items:center;}
+.nav-item{position:relative;}
+.nav-link{color:#8888AA;font-size:14px;font-weight:500;text-decoration:none;padding:8px 14px;border-radius:8px;display:flex;align-items:center;gap:5px;transition:all .2s;cursor:pointer;background:transparent;border:none;font-family:'Inter',sans-serif;}
+.nav-link:hover,.nav-link.active{color:#fff;background:rgba(123,92,229,0.12);}
+.nav-link svg{transition:transform .2s;}
+.nav-item:hover .nav-link svg{transform:rotate(180deg);}
+.nav-link.active{color:#C3A7FF;}
+
+/* ── Dropdown panel ── */
+.nav-dropdown{position:absolute;top:calc(100% + 12px);left:50%;transform:translateX(-50%);background:#0F0F2A;border:1px solid #1E1E4A;border-radius:16px;padding:20px;min-width:560px;opacity:0;visibility:hidden;transform:translateX(-50%) translateY(-8px);transition:all .25s cubic-bezier(.16,1,.3,1);box-shadow:0 24px 80px rgba(0,0,0,0.5),0 0 0 1px rgba(123,92,229,0.1);}
+.nav-item:hover .nav-dropdown{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);}
+.nav-dropdown::before{content:'';position:absolute;top:-6px;left:50%;transform:translateX(-50%);width:12px;height:12px;background:#0F0F2A;border-left:1px solid #1E1E4A;border-top:1px solid #1E1E4A;transform:translateX(-50%) rotate(45deg);}
+.dropdown-grid{display:grid;gap:6px;}
+.dropdown-grid-2{grid-template-columns:1fr 1fr;}
+.dropdown-grid-3{grid-template-columns:1fr 1fr 1fr;}
+.dropdown-section-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#5A5A7A;margin-bottom:8px;padding-bottom:6px;border-bottom:1px solid #1E1E4A;}
+.dropdown-link{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:8px;text-decoration:none;transition:all .2s;color:#C8C8DD;}
+.dropdown-link:hover{background:rgba(123,92,229,0.12);color:#fff;}
+.dropdown-link:hover .dl-icon{border-color:rgba(123,92,229,0.6);background:rgba(123,92,229,0.2);}
+.dl-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:rgba(255,255,255,0.04);border:1px solid #2A2A4A;transition:all .2s;}
+.dl-title{font-size:13px;font-weight:600;color:#fff;margin-bottom:1px;}
+.dl-sub{font-size:11px;color:#5A5A7A;line-height:1.3;}
+
+/* ── Mobile nav toggle (simple) ── */
+.nav-toggle{display:none;background:transparent;border:1px solid #2A2A4A;border-radius:8px;padding:8px;cursor:pointer;color:#8888AA;}
+@media(max-width:900px){
+  .pd-nav__links{display:none;}
+  .nav-toggle{display:flex;align-items:center;justify-content:center;}
+}
+
+
+
+.service-card>*,.feature-card>*,.process-card>*,.industry-card>*,.testi-card>*{position:relative;z-index:1;}
+
+/* ════════════════════════════════════
+   FULL MOBILE RESPONSIVENESS
+════════════════════════════════════ */
+
+@media(max-width:1024px){
+  .pd-nav__links{gap:2px;}
+  .nav-link{padding:6px 10px;font-size:13px;}
+}
+
+@media(max-width:900px){
+  /* Nav */
+  .pd-nav__inner{padding:0 16px;}
+  .pd-nav__links{display:none;position:fixed;top:68px;left:0;right:0;bottom:0;background:#0B0B1A;flex-direction:column;padding:20px 16px;overflow-y:auto;gap:6px;z-index:999;}
+  .pd-nav__links.open{display:flex;}
+  .nav-item{width:100%;}
+  .nav-link{width:100%;justify-content:space-between;}
+  .nav-dropdown{position:static;transform:none!important;visibility:visible!important;opacity:1!important;min-width:100%!important;border:none;background:rgba(255,255,255,0.04);border-radius:8px;margin-top:4px;padding:12px;display:none;}
+  .nav-item.open .nav-dropdown{display:block;}
+  .nav-item.open .nav-link svg{transform:rotate(180deg);}
+  .nav-toggle{display:flex;}
+
+  /* Hero */
+  .svc-hero{padding:60px 16px 40px;min-height:auto;}
+  h1{font-size:clamp(2rem,7vw,3.5rem)!important;}
+
+  /* Grids */
+  .dropdown-grid-2,.dropdown-grid-3{grid-template-columns:1fr!important;}
+}
+
+@media(max-width:768px){
+  /* Sections */
+  section{padding:60px 16px!important;}
+  .cta-section{padding:60px 16px!important;}
+
+  /* Hero headline */
+  h1{font-size:clamp(1.8rem,8vw,3rem)!important;letter-spacing:-0.02em!important;}
+  h2{font-size:clamp(1.5rem,6vw,2.5rem)!important;}
+
+  /* Stat strip - stack on mobile */
+  .stat-strip{grid-template-columns:1fr!important;}
+  .stat-strip__item{border-left:none!important;border-right:none!important;border-bottom:1px solid #1E1E4A;}
+
+  /* 2-col grids go 1-col */
+  div[style*="grid-template-columns:repeat(2,1fr)"]{display:block!important;}
+  div[style*="grid-template-columns:1fr 1fr"]{display:block!important;}
+  div[style*="gap:48px"]{gap:24px!important;}
+  div[style*="gap:64px"]{gap:32px!important;}
+
+  /* Cards */
+  div[style*="grid-template-columns:repeat(auto-fit,minmax(280px"]{grid-template-columns:1fr!important;}
+  div[style*="grid-template-columns:repeat(auto-fit,minmax(240px"]{grid-template-columns:1fr!important;}
+  div[style*="grid-template-columns:repeat(auto-fit,minmax(260px"]{grid-template-columns:1fr!important;}
+  div[style*="grid-template-columns:repeat(auto-fit,minmax(300px"]{grid-template-columns:1fr!important;}
+  div[style*="grid-template-columns:repeat(3,1fr)"]{grid-template-columns:1fr!important;}
+  div[style*="grid-template-columns:repeat(4,1fr)"]{grid-template-columns:1fr 1fr!important;}
+
+  /* Pricing cards */
+  div[style*="grid-template-columns:repeat(4,1fr)"].price-grid{grid-template-columns:1fr!important;}
+  .price-card.featured{transform:none!important;}
+
+  /* How it works steps - stack vertically */
+  div[style*="display:flex;align-items:flex-start;gap:0"]{flex-direction:column!important;align-items:center!important;}
+  div[style*="padding-top:40px;width:80px;flex-shrink:0"]{width:2px!important;height:40px!important;padding:0!important;}
+  div[style*="padding-top:40px;width:80px"] div{width:2px;height:40px;background:linear-gradient(to bottom,rgba(123,92,229,0.5),rgba(123,92,229,0.1))!important;}
+
+  /* Footer grid */
+  div[style*="grid-template-columns:2fr 1fr 1fr 1fr 1fr"]{grid-template-columns:1fr 1fr!important;gap:24px!important;}
+
+  /* Buttons */
+  div[style*="display:flex;gap:12px;justify-content:center"]{flex-direction:column!important;align-items:center!important;}
+  .btn-primary,.btn-outline{width:100%;max-width:300px;justify-content:center!important;}
+
+  /* Nav dropdown */
+  .nav-dropdown{min-width:100%!important;}
+  .dropdown-grid-2{grid-template-columns:1fr!important;}
+  .dropdown-grid-3{grid-template-columns:1fr!important;}
+
+  /* Industry cards */
+  div[style*="grid-template-columns:repeat(2,1fr)"]{grid-template-columns:1fr!important;}
+
+  /* Ticker */
+  .ticker-item{padding:8px 20px;font-size:13px;}
+
+  /* CTA buttons flex */
+  div[style*="display:flex;gap:12px;flex-wrap:wrap"]{flex-direction:column;align-items:stretch;}
+
+  /* Contact form grid */
+  div[style*="grid-template-columns:1fr 1fr;gap:48px"]{grid-template-columns:1fr!important;}
+}
+
+@media(max-width:480px){
+  .pd-nav__logo{font-size:16px;}
+  h1{font-size:clamp(1.6rem,9vw,2.5rem)!important;}
+  h2{font-size:clamp(1.4rem,7vw,2rem)!important;}
+  div[style*="grid-template-columns:repeat(4,1fr)"]{grid-template-columns:1fr!important;}
+  div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important;}
+  .pd-footer div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr 1fr!important;}
+  section{padding:48px 14px!important;}
+  .container{padding:0 14px!important;}
+}
+
+
+/* ════════════════════════════════════════
+   NINJAPROMO EXACT CARD HOVER SYSTEM
+   Strong colour fills, bright borders,
+   glowing shadows per card
+════════════════════════════════════════ */
+
+/* ── Base card reset ── */
+.service-card,.feature-card,.process-card,.industry-card,.testi-card,.case-card{
+  position:relative;overflow:hidden;
+  transition:background .3s ease,border-color .3s ease,box-shadow .3s ease,transform .3s cubic-bezier(.16,1,.3,1);
+}
+
+/* ── Coloured top line that appears on hover ── */
+.service-card::after,.feature-card::after,.process-card::after{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  opacity:0;transition:opacity .3s ease;border-radius:0;
+}
+
+/* ══ SERVICE CARDS — each unique colour ══ */
+
+/* 1 - Paid Ads - Purple */
+.service-card:nth-child(1){border-color:#1E1E4A;}
+.service-card:nth-child(1):hover{
+  background:linear-gradient(145deg,#1A1040 0%,#120D30 100%)!important;
+  border-color:#7B5CE5!important;
+  box-shadow:0 0 0 1px #7B5CE5,0 20px 60px rgba(123,92,229,0.35);
+  transform:translateY(-6px);
+}
+.service-card:nth-child(1)::after{background:#7B5CE5;}
+.service-card:nth-child(1):hover::after{opacity:1;}
+
+/* 2 - SEO - Cyan/Blue */
+.service-card:nth-child(2){border-color:#1E1E4A;}
+.service-card:nth-child(2):hover{
+  background:linear-gradient(145deg,#0A1F35 0%,#071525 100%)!important;
+  border-color:#38BDF8!important;
+  box-shadow:0 0 0 1px #38BDF8,0 20px 60px rgba(56,189,248,0.3);
+  transform:translateY(-6px);
+}
+.service-card:nth-child(2)::after{background:#38BDF8;}
+.service-card:nth-child(2):hover::after{opacity:1;}
+
+/* 3 - Social - Pink/Magenta */
+.service-card:nth-child(3){border-color:#1E1E4A;}
+.service-card:nth-child(3):hover{
+  background:linear-gradient(145deg,#2A0A2E 0%,#1A0620 100%)!important;
+  border-color:#E040FB!important;
+  box-shadow:0 0 0 1px #E040FB,0 20px 60px rgba(224,64,251,0.3);
+  transform:translateY(-6px);
+}
+.service-card:nth-child(3)::after{background:#E040FB;}
+.service-card:nth-child(3):hover::after{opacity:1;}
+
+/* 4 - Content - Green/Teal */
+.service-card:nth-child(4){border-color:#1E1E4A;}
+.service-card:nth-child(4):hover{
+  background:linear-gradient(145deg,#0A2018 0%,#061510 100%)!important;
+  border-color:#34D399!important;
+  box-shadow:0 0 0 1px #34D399,0 20px 60px rgba(52,211,153,0.28);
+  transform:translateY(-6px);
+}
+.service-card:nth-child(4)::after{background:#34D399;}
+.service-card:nth-child(4):hover::after{opacity:1;}
+
+/* 5 - Influencer - Amber */
+.service-card:nth-child(5){border-color:#1E1E4A;}
+.service-card:nth-child(5):hover{
+  background:linear-gradient(145deg,#241800 0%,#160F00 100%)!important;
+  border-color:#FBBF24!important;
+  box-shadow:0 0 0 1px #FBBF24,0 20px 60px rgba(251,191,36,0.25);
+  transform:translateY(-6px);
+}
+.service-card:nth-child(5)::after{background:#FBBF24;}
+.service-card:nth-child(5):hover::after{opacity:1;}
+
+/* 6 - Web3 - Red/Coral */
+.service-card:nth-child(6){border-color:#1E1E4A;}
+.service-card:nth-child(6):hover{
+  background:linear-gradient(145deg,#2A0A0A 0%,#1A0606 100%)!important;
+  border-color:#F87171!important;
+  box-shadow:0 0 0 1px #F87171,0 20px 60px rgba(248,113,113,0.28);
+  transform:translateY(-6px);
+}
+.service-card:nth-child(6)::after{background:#F87171;}
+.service-card:nth-child(6):hover::after{opacity:1;}
+
+/* 7 - CRO - Violet */
+.service-card:nth-child(7){border-color:#1E1E4A;}
+.service-card:nth-child(7):hover{
+  background:linear-gradient(145deg,#1A103A 0%,#100A28 100%)!important;
+  border-color:#A78BFA!important;
+  box-shadow:0 0 0 1px #A78BFA,0 20px 60px rgba(167,139,250,0.3);
+  transform:translateY(-6px);
+}
+.service-card:nth-child(7)::after{background:#A78BFA;}
+.service-card:nth-child(7):hover::after{opacity:1;}
+
+/* 8 - Branding - Cyan */
+.service-card:nth-child(8){border-color:#1E1E4A;}
+.service-card:nth-child(8):hover{
+  background:linear-gradient(145deg,#062025 0%,#041518 100%)!important;
+  border-color:#22D3EE!important;
+  box-shadow:0 0 0 1px #22D3EE,0 20px 60px rgba(34,211,238,0.28);
+  transform:translateY(-6px);
+}
+.service-card:nth-child(8)::after{background:#22D3EE;}
+.service-card:nth-child(8):hover::after{opacity:1;}
+
+/* ══ FEATURE CARDS — alternating colours ══ */
+.feature-card:nth-child(1):hover,.feature-card:nth-child(5):hover,.feature-card:nth-child(9):hover{
+  background:linear-gradient(145deg,#1A1040 0%,#120D30 100%)!important;
+  border-color:#7B5CE5!important;
+  box-shadow:0 0 0 1px #7B5CE5,0 16px 48px rgba(123,92,229,0.3);
+  transform:translateY(-5px);
+}
+.feature-card:nth-child(2):hover,.feature-card:nth-child(6):hover{
+  background:linear-gradient(145deg,#0A1F35 0%,#071525 100%)!important;
+  border-color:#38BDF8!important;
+  box-shadow:0 0 0 1px #38BDF8,0 16px 48px rgba(56,189,248,0.28);
+  transform:translateY(-5px);
+}
+.feature-card:nth-child(3):hover,.feature-card:nth-child(7):hover{
+  background:linear-gradient(145deg,#2A0A2E 0%,#1A0620 100%)!important;
+  border-color:#E040FB!important;
+  box-shadow:0 0 0 1px #E040FB,0 16px 48px rgba(224,64,251,0.28);
+  transform:translateY(-5px);
+}
+.feature-card:nth-child(4):hover,.feature-card:nth-child(8):hover{
+  background:linear-gradient(145deg,#0A2018 0%,#061510 100%)!important;
+  border-color:#34D399!important;
+  box-shadow:0 0 0 1px #34D399,0 16px 48px rgba(52,211,153,0.25);
+  transform:translateY(-5px);
+}
+
+/* Top accent line on feature cards */
+.feature-card:nth-child(1)::after,.feature-card:nth-child(5)::after,.feature-card:nth-child(9)::after{background:#7B5CE5;}
+.feature-card:nth-child(2)::after,.feature-card:nth-child(6)::after{background:#38BDF8;}
+.feature-card:nth-child(3)::after,.feature-card:nth-child(7)::after{background:#E040FB;}
+.feature-card:nth-child(4)::after,.feature-card:nth-child(8)::after{background:#34D399;}
+.feature-card:hover::after{opacity:1;}
+
+/* ══ PROCESS CARDS ══ */
+.process-card::after{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  opacity:0;transition:opacity .3s ease;
+}
+.process-card:nth-child(1):hover{
+  background:linear-gradient(145deg,#1A1040,#120D30)!important;
+  border-color:#7B5CE5!important;
+  box-shadow:0 0 0 1px #7B5CE5,0 12px 40px rgba(123,92,229,0.25);
+  transform:translateY(-4px);
+}
+.process-card:nth-child(1)::after{background:#7B5CE5;}
+.process-card:nth-child(2):hover{
+  background:linear-gradient(145deg,#0A1F35,#071525)!important;
+  border-color:#38BDF8!important;
+  box-shadow:0 0 0 1px #38BDF8,0 12px 40px rgba(56,189,248,0.25);
+  transform:translateY(-4px);
+}
+.process-card:nth-child(2)::after{background:#38BDF8;}
+.process-card:nth-child(3):hover{
+  background:linear-gradient(145deg,#0A2018,#061510)!important;
+  border-color:#34D399!important;
+  box-shadow:0 0 0 1px #34D399,0 12px 40px rgba(52,211,153,0.22);
+  transform:translateY(-4px);
+}
+.process-card:nth-child(3)::after{background:#34D399;}
+.process-card:nth-child(4):hover{
+  background:linear-gradient(145deg,#241800,#160F00)!important;
+  border-color:#FBBF24!important;
+  box-shadow:0 0 0 1px #FBBF24,0 12px 40px rgba(251,191,36,0.22);
+  transform:translateY(-4px);
+}
+.process-card:nth-child(4)::after{background:#FBBF24;}
+.process-card:hover::after{opacity:1;}
+
+/* ══ INDUSTRY CARDS ══ */
+.industry-card::after{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  opacity:0;transition:opacity .3s ease;
+}
+/* Real Estate - Purple */
+.industry-card:nth-child(1):hover{
+  background:linear-gradient(145deg,#1A1040 0%,#110C2E 100%)!important;
+  border-color:#7B5CE5!important;
+  box-shadow:0 0 0 1px #7B5CE5,0 24px 70px rgba(123,92,229,0.35);
+  transform:translateY(-8px);
+}
+.industry-card:nth-child(1)::after{background:linear-gradient(90deg,#7B5CE5,#E040FB);}
+/* SRI Finance - Green */
+.industry-card:nth-child(2):hover{
+  background:linear-gradient(145deg,#0A2018 0%,#061510 100%)!important;
+  border-color:#34D399!important;
+  box-shadow:0 0 0 1px #34D399,0 24px 70px rgba(52,211,153,0.3);
+  transform:translateY(-8px);
+}
+.industry-card:nth-child(2)::after{background:linear-gradient(90deg,#34D399,#22D3EE);}
+/* Esports - Amber */
+.industry-card:nth-child(3):hover{
+  background:linear-gradient(145deg,#241800 0%,#160F00 100%)!important;
+  border-color:#FBBF24!important;
+  box-shadow:0 0 0 1px #FBBF24,0 24px 70px rgba(251,191,36,0.28);
+  transform:translateY(-8px);
+}
+.industry-card:nth-child(3)::after{background:linear-gradient(90deg,#FBBF24,#F87171);}
+/* Web3 - Pink/Magenta */
+.industry-card:nth-child(4):hover{
+  background:linear-gradient(145deg,#2A0A2E 0%,#1A0620 100%)!important;
+  border-color:#E040FB!important;
+  box-shadow:0 0 0 1px #E040FB,0 24px 70px rgba(224,64,251,0.3);
+  transform:translateY(-8px);
+}
+.industry-card:nth-child(4)::after{background:linear-gradient(90deg,#E040FB,#7B5CE5);}
+.industry-card:hover::after{opacity:1;}
+
+/* ══ TESTIMONIAL CARDS ══ */
+.testi-card:nth-child(1):hover{
+  background:linear-gradient(145deg,#1A1040,#120D30)!important;
+  border-color:#7B5CE5!important;
+  box-shadow:0 0 0 1px #7B5CE5,0 16px 50px rgba(123,92,229,0.28);
+  transform:translateY(-4px);
+}
+.testi-card:nth-child(2):hover{
+  background:linear-gradient(145deg,#0A1F35,#071525)!important;
+  border-color:#38BDF8!important;
+  box-shadow:0 0 0 1px #38BDF8,0 16px 50px rgba(56,189,248,0.25);
+  transform:translateY(-4px);
+}
+.testi-card:nth-child(3):hover{
+  background:linear-gradient(145deg,#2A0A2E,#1A0620)!important;
+  border-color:#E040FB!important;
+  box-shadow:0 0 0 1px #E040FB,0 16px 50px rgba(224,64,251,0.25);
+  transform:translateY(-4px);
+}
+
+/* ══ CASE STUDY CARDS ══ */
+.case-card:nth-child(1):hover{
+  border-color:#7B5CE5!important;
+  box-shadow:0 0 0 1px #7B5CE5,0 20px 60px rgba(123,92,229,0.3);
+  background:#0F0A28!important;
+  transform:translateY(-6px);
+}
+.case-card:nth-child(2):hover{
+  border-color:#34D399!important;
+  box-shadow:0 0 0 1px #34D399,0 20px 60px rgba(52,211,153,0.25);
+  background:#061510!important;
+  transform:translateY(-6px);
+}
+.case-card:nth-child(3):hover{
+  border-color:#FBBF24!important;
+  box-shadow:0 0 0 1px #FBBF24,0 20px 60px rgba(251,191,36,0.22);
+  background:#160F00!important;
+  transform:translateY(-6px);
+}
+
+/* ══ PRICE CARDS ══ */
+.price-card:not(.featured):hover{
+  background:linear-gradient(145deg,#1A1040,#120D30)!important;
+  border-color:#7B5CE5!important;
+  box-shadow:0 0 0 1px #7B5CE5,0 20px 60px rgba(123,92,229,0.25);
+  transform:translateY(-4px);
+}
+
+/* ══ ICON BOXES change colour on card hover ── */
+.service-card:nth-child(1):hover .icon-box{background:rgba(123,92,229,0.3)!important;border-color:#7B5CE5!important;}
+.service-card:nth-child(2):hover .icon-box{background:rgba(56,189,248,0.25)!important;border-color:#38BDF8!important;}
+.service-card:nth-child(3):hover .icon-box{background:rgba(224,64,251,0.25)!important;border-color:#E040FB!important;}
+.service-card:nth-child(4):hover .icon-box{background:rgba(52,211,153,0.25)!important;border-color:#34D399!important;}
+.service-card:nth-child(5):hover .icon-box{background:rgba(251,191,36,0.25)!important;border-color:#FBBF24!important;}
+.service-card:nth-child(6):hover .icon-box{background:rgba(248,113,113,0.25)!important;border-color:#F87171!important;}
+.service-card:nth-child(7):hover .icon-box{background:rgba(167,139,250,0.25)!important;border-color:#A78BFA!important;}
+.service-card:nth-child(8):hover .icon-box{background:rgba(34,211,238,0.25)!important;border-color:#22D3EE!important;}
+
+/* ══ STEP CIRCLES change on process card hover ── */
+.process-card:nth-child(1):hover .step-circle{background:rgba(123,92,229,0.3)!important;border-color:#7B5CE5!important;color:#C3A7FF!important;}
+.process-card:nth-child(2):hover .step-circle{background:rgba(56,189,248,0.25)!important;border-color:#38BDF8!important;color:#7DD3FC!important;}
+.process-card:nth-child(3):hover .step-circle{background:rgba(52,211,153,0.25)!important;border-color:#34D399!important;color:#6EE7B7!important;}
+.process-card:nth-child(4):hover .step-circle{background:rgba(251,191,36,0.25)!important;border-color:#FBBF24!important;color:#FCD34D!important;}
+
+/* ══ Remove old conflicting hover styles ── */
+.feature-card::before,.service-card::before,.industry-card::before,
+.process-card::before,.testi-card::before{display:none!important;}
+
+</style>
+</head>
+<body>
+<nav class="pd-nav">
+  <div class="pd-nav__inner">
+    <a href="index.html" class="pd-nav__logo">Pulse<span class="grad-text">Devix</span></a>
+    <div class="pd-nav__links">
+      <a href="service-paid-ads.html" class="active">Services</a>
+      <a href="industry-real-estate.html">Industries</a>
+      <a href="index.html#cases">Case Studies</a>
+      <a href="index.html#pricing">Pricing</a>
+      <a href="about.html">About</a>
+    </div>
+    <a href="contact.html" class="btn-primary btn-primary-sm">Book Intro Call</a>
+  </div>
+</nav>
+
+<section class="svc-hero dot-grid">
+  <div class="glow-blob" style="width:600px;height:600px;background:radial-gradient(circle,rgba(123,92,229,0.2) 0%,transparent 70%);top:-100px;left:50%;transform:translateX(-50%);"></div>
+  <div class="glow-blob" style="width:300px;height:300px;background:rgba(224,64,251,0.08);top:30%;right:-60px;"></div>
+  <div class="container" style="position:relative;z-index:1;width:100%;">
+    <div class="breadcrumb fade-up">
+      <a href="index.html">Home</a><span>/</span>
+      <a href="service-paid-ads.html">Services</a><span>/</span>
+      <span style="color:#C3A7FF;">SEO</span>
+    </div>
+    <div class="badge fade-up" style="margin-bottom:24px;"><span class="dot"></span>Search Engine Optimisation</div>
+    <h1 class="fade-up" style="font-size:clamp(2.5rem,6vw,5rem);font-weight:900;line-height:1.05;letter-spacing:-0.03em;max-width:700px;margin-bottom:20px;">
+      Rank First. Stay First.<br/><span class="grad-text">No Black Hats.</span>
+    </h1>
+    <p class="fade-up" style="font-size:clamp(1rem,1.6vw,1.1rem);color:#8888AA;line-height:1.7;max-width:580px;margin-bottom:36px;">Technical audits, content strategy, and link building — engineered to rank your brand in the most competitive search categories in your industry.</p>
+    <div class="fade-up" style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:56px;">
+      <a href="contact.html" class="btn-primary">Book Intro Call →</a>
+      <a href="index.html#pricing" class="btn-outline">See Pricing</a>
+    </div>
+    <div class="stat-strip fade-up"><div class="stat-strip__item">
+          <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#5A5A7A;margin-bottom:6px;">Organic traffic growth</div>
+          <div style="font-size:2rem;font-weight:900;letter-spacing:-0.04em;" class="grad-text">3×</div>
+          <div style="font-size:11px;color:#5A5A7A;margin-top:4px;">avg. in 6 months</div>
+        </div><div class="stat-strip__item">
+          <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#5A5A7A;margin-bottom:6px;">Keyword rankings</div>
+          <div style="font-size:2rem;font-weight:900;letter-spacing:-0.04em;" class="grad-text">Top 3</div>
+          <div style="font-size:11px;color:#5A5A7A;margin-top:4px;">for target terms</div>
+        </div><div class="stat-strip__item">
+          <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#5A5A7A;margin-bottom:6px;">SEO audits completed</div>
+          <div style="font-size:2rem;font-weight:900;letter-spacing:-0.04em;" class="grad-text">180+</div>
+          <div style="font-size:11px;color:#5A5A7A;margin-top:4px;">across all verticals</div>
+        </div></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section style="padding:80px 24px;">
+  <div class="container">
+    <div style="margin-bottom:48px;">
+      <div class="sec-label" style="margin-bottom:12px;">What We Cover</div>
+      <h2 style="font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;letter-spacing:-0.03em;">
+        Everything Included<br/><span class="grad-text-warm">In Your Subscription.</span>
+      </h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;">
+      <div class="feature-card fade-up">
+          <div class="icon-box" style="margin-bottom:16px;">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="8" stroke="#9B6FF0" stroke-width="1.5"/><path d="M8 11l2 2 4-4" stroke="#9B6FF0" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <div style="font-size:15px;font-weight:700;margin-bottom:8px;">Technical SEO</div>
+          <div style="font-size:13px;color:#8888AA;line-height:1.65;">Site architecture, Core Web Vitals, crawlability, indexation, schema markup. The foundation everything else depends on.</div>
+        </div><div class="feature-card fade-up">
+          <div class="icon-box" style="margin-bottom:16px;">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="8" stroke="#9B6FF0" stroke-width="1.5"/><path d="M8 11l2 2 4-4" stroke="#9B6FF0" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <div style="font-size:15px;font-weight:700;margin-bottom:8px;">Content SEO</div>
+          <div style="font-size:13px;color:#8888AA;line-height:1.65;">Keyword research, topical authority mapping, and content briefs that writers can actually execute.</div>
+        </div><div class="feature-card fade-up">
+          <div class="icon-box" style="margin-bottom:16px;">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="8" stroke="#9B6FF0" stroke-width="1.5"/><path d="M8 11l2 2 4-4" stroke="#9B6FF0" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <div style="font-size:15px;font-weight:700;margin-bottom:8px;">Local SEO</div>
+          <div style="font-size:13px;color:#8888AA;line-height:1.65;">Google Business Profile optimisation, local citations, and geo-targeted content for Real Estate and Finance brands.</div>
+        </div><div class="feature-card fade-up">
+          <div class="icon-box" style="margin-bottom:16px;">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="8" stroke="#9B6FF0" stroke-width="1.5"/><path d="M8 11l2 2 4-4" stroke="#9B6FF0" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <div style="font-size:15px;font-weight:700;margin-bottom:8px;">Link Building</div>
+          <div style="font-size:13px;color:#8888AA;line-height:1.65;">White-hat outreach and digital PR to earn backlinks from high-authority domains in your vertical.</div>
+        </div><div class="feature-card fade-up">
+          <div class="icon-box" style="margin-bottom:16px;">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="8" stroke="#9B6FF0" stroke-width="1.5"/><path d="M8 11l2 2 4-4" stroke="#9B6FF0" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <div style="font-size:15px;font-weight:700;margin-bottom:8px;">On-Page Optimisation</div>
+          <div style="font-size:13px;color:#8888AA;line-height:1.65;">Title tags, meta descriptions, internal linking, and page structure — reviewed and fixed across your entire site.</div>
+        </div><div class="feature-card fade-up">
+          <div class="icon-box" style="margin-bottom:16px;">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="8" stroke="#9B6FF0" stroke-width="1.5"/><path d="M8 11l2 2 4-4" stroke="#9B6FF0" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <div style="font-size:15px;font-weight:700;margin-bottom:8px;">SEO Reporting</div>
+          <div style="font-size:13px;color:#8888AA;line-height:1.65;">Rank tracking, traffic analysis, and conversion attribution. Monthly reports that connect SEO to revenue.</div>
+        </div>
+    <div class="feature-card fade-up">
+          <div class="icon-box" style="margin-bottom:16px;">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="8" stroke="#9B6FF0" stroke-width="1.5"/><path d="M7 11h8M11 7v8" stroke="#9B6FF0" stroke-width="1.5" stroke-linecap="round"/><circle cx="11" cy="11" r="3" fill="rgba(123,92,229,0.2)"/></svg>
+          </div>
+          <div style="font-size:15px;font-weight:700;margin-bottom:8px;">GEO — Generative Engine Optimisation</div>
+          <div style="font-size:13px;color:#8888AA;line-height:1.65;">Optimise your content to appear in AI-generated answers on ChatGPT, Perplexity, Google AI Overviews, and Gemini. The next frontier of search — we position your brand as the source AI models cite.</div>
+        </div>
+        </div>
+  </div>
+</section>
+<div class="divider"></div>
+
+<section style="padding:80px 24px;background:#080D1F;">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;">
+      <div class="fade-up">
+        <div class="sec-label" style="margin-bottom:12px;">The New Frontier</div>
+        <h2 style="font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;letter-spacing:-0.03em;margin-bottom:20px;">
+          GEO — Generative<br/><span class="grad-text">Engine Optimisation.</span>
+        </h2>
+        <p style="font-size:14px;color:#8888AA;line-height:1.85;margin-bottom:20px;">
+          When someone asks ChatGPT, Perplexity, or Google AI "which real estate marketing agency should I use?" — the AI pulls from indexed sources to generate its answer. GEO is the discipline of making sure your brand is what gets cited.
+        </p>
+        <p style="font-size:14px;color:#8888AA;line-height:1.85;margin-bottom:24px;">
+          Traditional SEO gets you ranked on page 1. GEO gets you <em style="color:#C3A7FF;font-style:normal;font-weight:600;">mentioned in the answer itself</em> — before the user even sees a list of links.
+        </p>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <div class="feat-item"><div class="feat-check">✓</div>Optimise content structure for AI extraction</div>
+          <div class="feat-item"><div class="feat-check">✓</div>Build entity authority across AI knowledge graphs</div>
+          <div class="feat-item"><div class="feat-check">✓</div>Target featured snippets and AI overview panels</div>
+          <div class="feat-item"><div class="feat-check">✓</div>Schema markup for machine-readable brand signals</div>
+          <div class="feat-item"><div class="feat-check">✓</div>Citation building across authoritative sources</div>
+        </div>
+      </div>
+
+      <div class="fade-up">
+        <div style="background:#11112A;border:1px solid #1E1E4A;border-radius:16px;padding:28px;margin-bottom:14px;">
+          <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#9B6FF0;margin-bottom:16px;">Traditional SEO vs GEO</div>
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+              <div style="background:rgba(255,60,60,0.06);border:1px solid rgba(255,60,60,0.15);border-radius:8px;padding:12px;">
+                <div style="font-size:11px;font-family:'DM Mono',monospace;color:#F87171;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;">Traditional SEO</div>
+                <div style="font-size:12px;color:#8888AA;line-height:1.6;">User searches → sees 10 blue links → clicks → reads your page</div>
+              </div>
+              <div style="background:rgba(123,92,229,0.08);border:1px solid rgba(123,92,229,0.3);border-radius:8px;padding:12px;">
+                <div style="font-size:11px;font-family:'DM Mono',monospace;color:#9B6FF0;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;">GEO</div>
+                <div style="font-size:12px;color:#C8C8DD;line-height:1.6;">User asks AI → AI cites your brand in the answer → trust established instantly</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="background:#11112A;border:1px solid #1E1E4A;border-radius:16px;padding:24px;">
+          <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#5A5A7A;margin-bottom:14px;">AI Platforms We Optimise For</div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;">
+            <span style="padding:6px 14px;background:rgba(123,92,229,0.1);border:1px solid rgba(123,92,229,0.25);border-radius:100px;font-size:12px;color:#C3A7FF;">ChatGPT</span>
+            <span style="padding:6px 14px;background:rgba(56,189,248,0.08);border:1px solid rgba(56,189,248,0.2);border-radius:100px;font-size:12px;color:#7DD3FC;">Perplexity</span>
+            <span style="padding:6px 14px;background:rgba(52,211,153,0.08);border:1px solid rgba(52,211,153,0.2);border-radius:100px;font-size:12px;color:#6EE7B7;">Google AI Overviews</span>
+            <span style="padding:6px 14px;background:rgba(251,191,36,0.08);border:1px solid rgba(251,191,36,0.2);border-radius:100px;font-size:12px;color:#FCD34D;">Gemini</span>
+            <span style="padding:6px 14px;background:rgba(248,113,113,0.08);border:1px solid rgba(248,113,113,0.2);border-radius:100px;font-size:12px;color:#FCA5A5;">Claude</span>
+            <span style="padding:6px 14px;background:rgba(167,139,250,0.08);border:1px solid rgba(167,139,250,0.2);border-radius:100px;font-size:12px;color:#C4B5FD;">Copilot</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section style="padding:80px 24px;background:#080D1F;">
+  <div class="container">
+    <div style="margin-bottom:48px;">
+      <div class="sec-label" style="margin-bottom:12px;">How We Work</div>
+      <h2 style="font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;letter-spacing:-0.03em;">
+        Our Process.<br/><span class="grad-text">No Surprises.</span>
+      </h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;">
+      <div class="process-card fade-up">
+          <div class="step-circle">01</div>
+          <div>
+            <div style="font-size:15px;font-weight:700;margin-bottom:6px;">Technical Audit</div>
+            <div style="font-size:13px;color:#8888AA;line-height:1.65;">We crawl your entire site, identify every issue, and prioritise fixes by revenue impact — not just SEO score.</div>
+          </div>
+        </div><div class="process-card fade-up">
+          <div class="step-circle">02</div>
+          <div>
+            <div style="font-size:15px;font-weight:700;margin-bottom:6px;">Keyword Strategy</div>
+            <div style="font-size:13px;color:#8888AA;line-height:1.65;">We map your target keywords to search intent and buyer journey stage. No keyword stuffing, no vanity terms.</div>
+          </div>
+        </div><div class="process-card fade-up">
+          <div class="step-circle">03</div>
+          <div>
+            <div style="font-size:15px;font-weight:700;margin-bottom:6px;">Content & Links</div>
+            <div style="font-size:13px;color:#8888AA;line-height:1.65;">We publish optimised content and build authoritative backlinks simultaneously — the two pillars of ranking.</div>
+          </div>
+        </div><div class="process-card fade-up">
+          <div class="step-circle">04</div>
+          <div>
+            <div style="font-size:15px;font-weight:700;margin-bottom:6px;">Track & Compound</div>
+            <div style="font-size:13px;color:#8888AA;line-height:1.65;">SEO compounds over time. We track every keyword, every page, and reinvest in what's gaining momentum.</div>
+          </div>
+        </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section style="padding:80px 24px;">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;">
+      <div>
+        <div class="sec-label" style="margin-bottom:12px;">Why PulseDevix</div>
+        <h2 style="font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:900;letter-spacing:-0.03em;margin-bottom:20px;">
+          Industry-Specific.<br/><span class="grad-text-warm">Results-Obsessed.</span>
+        </h2>
+        <p style="font-size:14px;color:#8888AA;line-height:1.75;margin-bottom:28px;">
+          We don't run generic campaigns. Every strategy is built for your specific industry — Real Estate, SRI Finance, Esports, or Web3 — by specialists who live in those verticals every day.
+        </p>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <div class="feat-item"><div class="feat-check">✓</div>Industry-specialist team on every account</div>
+          <div class="feat-item"><div class="feat-check">✓</div>Dedicated project manager from day one</div>
+          <div class="feat-item"><div class="feat-check">✓</div>Weekly calls, monthly reports — no black boxes</div>
+          <div class="feat-item"><div class="feat-check">✓</div>Pause or cancel anytime — no contracts</div>
+          <div class="feat-item"><div class="feat-check">✓</div>Hours roll across any service in your subscription</div>
+        </div>
+      </div>
+      <div style="background:#11112A;border:1px solid #1E1E4A;border-radius:16px;padding:32px;">
+        <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#5A5A7A;margin-bottom:20px;">Also included in every plan</div>
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <div class="feat-item"><div class="feat-check">✓</div>Access to all 8 services — use hours however you need</div>
+          <div class="feat-item"><div class="feat-check">✓</div>Transparent hour tracking dashboard</div>
+          <div class="feat-item"><div class="feat-check">✓</div>Direct Slack/WhatsApp access to your team</div>
+          <div class="feat-item"><div class="feat-check">✓</div>Creative assets delivered in all required formats</div>
+          <div class="feat-item"><div class="feat-check">✓</div>Priority support on Scale & Full Force plans</div>
+        </div>
+        <div style="margin-top:24px;padding-top:20px;border-top:1px solid #1E1E4A;">
+          <a href="index.html#pricing" class="btn-primary" style="width:100%;justify-content:center;">View All Plans →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section style="padding:60px 24px;">
+  <div class="container">
+    <div class="sec-label" style="margin-bottom:20px;">Other Services</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;">
+      <a href="service-paid-ads.html" class="service-link-card">
+          <span style="font-size:14px;font-weight:600;color:#C3A7FF;">Paid Advertising</span>
+          <span style="color:#5A5A7A;font-size:18px;">→</span>
+        </a><a href="service-content.html" class="service-link-card">
+          <span style="font-size:14px;font-weight:600;color:#C3A7FF;">Content Marketing</span>
+          <span style="color:#5A5A7A;font-size:18px;">→</span>
+        </a><a href="service-cro.html" class="service-link-card">
+          <span style="font-size:14px;font-weight:600;color:#C3A7FF;">CRO</span>
+          <span style="color:#5A5A7A;font-size:18px;">→</span>
+        </a><a href="service-social.html" class="service-link-card">
+          <span style="font-size:14px;font-weight:600;color:#C3A7FF;">Social Media</span>
+          <span style="color:#5A5A7A;font-size:18px;">→</span>
+        </a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="cta-section">
+  <div class="glow-blob" style="width:600px;height:400px;background:radial-gradient(ellipse,rgba(123,92,229,0.18) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);"></div>
+  <div style="position:relative;z-index:1;max-width:640px;margin:0 auto;">
+    <div class="sec-label" style="margin-bottom:20px;">Ready to Start?</div>
+    <h2 style="font-size:clamp(2rem,5vw,3.5rem);font-weight:900;letter-spacing:-0.04em;line-height:1.05;margin-bottom:20px;">
+      Book an Intro Call.<br/><span class="grad-text">We'll Handle the Rest.</span>
+    </h2>
+    <p style="font-size:15px;color:#8888AA;line-height:1.7;margin-bottom:32px;">Tell us what you need. We'll scope the right hours, assign your specialist team, and get to work.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:16px;">
+      <a href="contact.html" class="btn-primary" style="font-size:16px;padding:16px 32px;">Book Intro Call →</a>
+      <a href="index.html#pricing" class="btn-outline" style="font-size:16px;padding:16px 32px;">See Pricing</a>
+    </div>
+    <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#5A5A7A;">
+      No contracts · Pause anytime · 48h onboarding
+    </div>
+  </div>
+</section>
+<footer class="pd-footer">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px;">
+      <div>
+        <div style="font-weight:800;font-size:20px;letter-spacing:-0.02em;margin-bottom:16px;">Pulse<span class="grad-text">Devix</span></div>
+        <p style="font-size:13px;color:#5A5A7A;line-height:1.7;max-width:240px;margin-bottom:20px;">Marketing-as-a-Service for Real Estate, SRI Finance, Esports, and Web3. One subscription. Full team.</p>
+        <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#5A5A7A;">Lahore, Pakistan · USA</div>
+      </div>
+      <div>
+        <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#5A5A7A;margin-bottom:16px;">Services</div>
+        <a href="service-paid-ads.html">Paid Advertising</a>
+        <a href="service-seo.html">SEO</a>
+        <a href="service-social.html">Social Media</a>
+        <a href="service-content.html">Content</a>
+        <a href="service-influencer.html">Influencer</a>
+        <a href="service-web3.html">Web3 Marketing</a>
+        <a href="service-cro.html">CRO</a>
+        <a href="service-branding.html">Branding</a>
+      </div>
+      <div>
+        <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#5A5A7A;margin-bottom:16px;">Industries</div>
+        <a href="industry-real-estate.html">Real Estate</a>
+        <a href="industry-finance.html">SRI Finance</a>
+        <a href="industry-esports.html">Esports</a>
+        <a href="industry-web3.html">Web3</a>
+      </div>
+      <div>
+        <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#5A5A7A;margin-bottom:16px;">Company</div>
+        <a href="about.html">About Us</a>
+        <a href="team.html">Our Team</a>
+        <a href="index.html#cases">Case Studies</a>
+        <a href="blog.html">Blog</a>
+      </div>
+      <div>
+        <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#5A5A7A;margin-bottom:16px;">Contact</div>
+        <a href="contact.html">Book Intro Call</a>
+        <a href="mailto:hello@pulsedevix.com">hello@pulsedevix.com</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">Instagram</a>
+      </div>
+    </div>
+    <div style="border-top:1px solid #1E1E4A;padding-top:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+      <div style="font-size:12px;color:#5A5A7A;">© 2026 PulseDevix. All rights reserved.</div>
+      <div style="display:flex;gap:20px;">
+        <a href="#" style="font-size:12px;color:#5A5A7A;text-decoration:none;">Privacy Policy</a>
+        <a href="#" style="font-size:12px;color:#5A5A7A;text-decoration:none;">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ── Intersection observer for reveals ── */
+var ro=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){e.target.classList.add('visible');}
+  });
+},{threshold:0.1});
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.fade-up').forEach(function(el){
+  el.classList.add('reveal');
+  ro.observe(el);
+});
+
+/* ── Counter animation ── */
+function animateCounter(el){
+  var target=parseFloat(el.dataset.target||el.innerText.replace(/[^0-9.]/g,''));
+  var suffix=el.dataset.suffix||'';
+  var prefix=el.dataset.prefix||'';
+  var duration=2000;
+  var start=null;
+  var isFloat=target%1!==0;
+  function step(ts){
+    if(!start)start=ts;
+    var prog=Math.min((ts-start)/duration,1);
+    var ease=1-Math.pow(1-prog,4);
+    var val=target*ease;
+    el.innerText=prefix+(isFloat?val.toFixed(1):Math.floor(val))+suffix;
+    if(prog<1)requestAnimationFrame(step);
+    else el.innerText=prefix+target+suffix;
+  }
+  requestAnimationFrame(step);
+}
+
+/* ── Observe stat numbers ── */
+var co=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting&&!e.target.dataset.counted){
+      e.target.dataset.counted='1';
+      animateCounter(e.target);
+    }
+  });
+},{threshold:0.5});
+
+/* Find grad-text elements that are numbers */
+document.querySelectorAll('.grad-text,.stat-strip__item div[style*="font-size:2"]').forEach(function(el){
+  var txt=el.innerText.trim();
+  if(/^[\d.]+/.test(txt)){
+    var m=txt.match(/^([\d.]+)(.*)/);
+    if(m){
+      el.dataset.target=m[1];
+      el.dataset.suffix=m[2];
+      co.observe(el);
+    }
+  }
+});
+
+/* ── Typed text effect on hero ── */
+var typedEl=document.getElementById('typed-industry');
+if(typedEl){
+  var words=['Real Estate.','SRI Finance.','Esports.','Web3.'];
+  var wi=0,ci=0,deleting=false;
+  function type(){
+    var word=words[wi];
+    if(!deleting){
+      typedEl.innerText=word.substring(0,ci+1);
+      ci++;
+      if(ci===word.length){deleting=true;setTimeout(type,1800);return;}
+    } else {
+      typedEl.innerText=word.substring(0,ci-1);
+      ci--;
+      if(ci===0){deleting=false;wi=(wi+1)%words.length;}
+    }
+    setTimeout(type,deleting?60:100);
+  }
+  setTimeout(type,1000);
+}
+
+/* ── Service card colourful icons ── */
+var iconClasses=['svc-icon-1','svc-icon-2','svc-icon-3','svc-icon-4','svc-icon-5','svc-icon-6','svc-icon-7','svc-icon-8'];
+document.querySelectorAll('.service-card .icon-box, .feature-card .icon-box').forEach(function(el,i){
+  el.className='icon-box '+iconClasses[i%8];
+});
+
+/* ── Staggered card reveal ── */
+document.querySelectorAll('.feature-card,.service-card,.testi-card,.case-card').forEach(function(el,i){
+  el.style.transitionDelay=(i*0.08)+'s';
+  ro.observe(el);
+});
+</script>
+
+<script>
+/* ── Nav active page highlight ── */
+(function(){
+  var path=window.location.pathname.split('/').pop()||'index.html';
+  document.querySelectorAll('.nav-link[href]').forEach(function(a){
+    if(a.getAttribute('href')===path)a.classList.add('active');
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<link rel="icon" type="image/x-icon" href="favicon.ico"/>
+<link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+<link rel="apple-touch-icon" href="favicon-180.png"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Web3 & Crypto Marketing Agency — PulseDevix</title>
+<style>/* ═══════════════════════════════════════
+   PULSEDEVIX — Shared Design System
+   Colors: NinjaPromo purple system
+   Font: Inter + DM Mono
+═══════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&display=swap');
+
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:#0B0B1A;font-family:'Inter',sans-serif;color:#fff;overflow-x:hidden;}
+
+/* ── Tokens ── */
+:root{
+  --bg:#0B0B1A; --surface:#11112A; --card:#16163A;
+  --border:#1E1E4A; --purple:#7B5CE5; --violet:#9B6FF0;
+  --lavender:#C3A7FF; --pink:#E040FB; --muted:#8888AA; --dim:#5A5A7A;
+}
+
+/* ── Utilities ── */
+/* grad-text replaced */
+/* grad-text-warm replaced */
+.glow-blob{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;}
+.dot-grid{background-image:radial-gradient(circle,rgba(123,92,229,0.15) 1px,transparent 1px);background-size:32px 32px;}
+.divider{height:1px;background:linear-gradient(90deg,transparent,#1E1E4A,transparent);margin:0;}
+.sec-label{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#9B6FF0;}
+.container{max-width:1100px;margin:0 auto;padding:0 24px;}
+
+/* ── Nav ── */
+.pd-nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(16px);background:rgba(11,11,26,0.9);border-bottom:1px solid #1E1E4A;}
+.pd-nav__inner{max-width:1200px;margin:0 auto;padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between;}
+.pd-nav__logo{font-weight:800;font-size:18px;letter-spacing:-0.02em;text-decoration:none;color:#fff;}
+.pd-nav__links{display:flex;gap:28px;align-items:center;}
+.pd-nav__links a{color:#8888AA;font-size:14px;font-weight:500;text-decoration:none;transition:color .2s;}
+.pd-nav__links a:hover{color:#fff;}
+.pd-nav__links a.active{color:#fff;}
+
+/* ── Buttons ── */
+.btn-primary{background:linear-gradient(135deg,#7B5CE5,#9B6FF0);color:#fff;font-weight:700;border:none;border-radius:8px;padding:14px 28px;font-size:15px;cursor:pointer;transition:opacity .2s,transform .15s;display:inline-flex;align-items:center;gap:8px;text-decoration:none;}
+.btn-primary:hover{opacity:.88;transform:translateY(-1px);}
+.btn-primary-sm{padding:10px 20px;font-size:14px;}
+.btn-outline{background:transparent;color:#C3A7FF;font-weight:600;border:1px solid #1E1E4A;border-radius:8px;padding:14px 28px;font-size:15px;cursor:pointer;transition:border-color .2s,color .2s;display:inline-flex;align-items:center;gap:8px;text-decoration:none;}
+.btn-outline:hover{border-color:#9B6FF0;color:#fff;}
+.btn-ghost{background:transparent;color:#8888AA;border:1px solid #1E1E4A;border-radius:8px;padding:10px 20px;font-size:13px;font-weight:500;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:all .2s;}
+.btn-ghost:hover{border-color:#7B5CE5;color:#C3A7FF;}
+
+/* ── Badge ── */
+.badge{display:inline-flex;align-items:center;gap:6px;background:rgba(123,92,229,0.15);border:1px solid rgba(123,92,229,0.35);border-radius:100px;padding:5px 14px;font-size:12px;font-weight:500;color:#C3A7FF;font-family:'DM Mono',monospace;letter-spacing:0.06em;}
+.badge .dot{width:7px;height:7px;border-radius:50%;background:#7B5CE5;animation:pulseDot 2s ease-in-out infinite;}
+@keyframes pulseDot{0%,100%{opacity:.5}50%{opacity:1}}
+
+/* ── Cards ── */
+.feature-card{background:#11112A;border:1px solid #1E1E4A;border-radius:14px;padding:24px;transition:border-color .25s,transform .2s;}
+.feature-card:hover{border-color:rgba(123,92,229,0.5);transform:translateY(-3px);}
+.stat-card{background:#11112A;border:1px solid #1E1E4A;border-radius:12px;padding:20px 24px;}
+.process-card{background:#11112A;border:1px solid #1E1E4A;border-radius:14px;padding:24px;display:flex;gap:16px;}
+.service-link-card{background:#11112A;border:1px solid #1E1E4A;border-radius:12px;padding:18px 20px;text-decoration:none;display:flex;align-items:center;justify-content:space-between;transition:all .2s;}
+.service-link-card:hover{border-color:#7B5CE5;transform:translateX(4px);}
+
+/* ── Service hero ── */
+.svc-hero{position:relative;min-height:72vh;display:flex;align-items:center;padding:80px 24px 60px;overflow:hidden;}
+
+/* ── Stat strip ── */
+.stat-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#1E1E4A;border-radius:14px;overflow:hidden;border:1px solid #1E1E4A;}
+.stat-strip__item{background:#11112A;padding:20px 24px;}
+
+/* ── Process step number ── */
+.step-circle{width:40px;height:40px;border-radius:50%;background:rgba(123,92,229,0.15);border:1px solid rgba(123,92,229,0.4);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;color:#C3A7FF;flex-shrink:0;}
+
+/* ── Icon box ── */
+.icon-box{width:48px;height:48px;border-radius:12px;background:rgba(123,92,229,0.15);border:1px solid rgba(123,92,229,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+
+/* ── Breadcrumb ── */
+.breadcrumb{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#5A5A7A;display:flex;align-items:center;gap:8px;margin-bottom:20px;}
+.breadcrumb a{color:#5A5A7A;text-decoration:none;transition:color .2s;}
+.breadcrumb a:hover{color:#9B6FF0;}
+.breadcrumb span{color:#3A3A5A;}
+
+/* ── CTA section ── */
+.cta-section{padding:100px 24px;text-align:center;position:relative;overflow:hidden;}
+
+/* ── Footer ── */
+.pd-footer{padding:60px 24px 32px;background:#080810;}
+.pd-footer a{color:#5A5A7A;font-size:13px;text-decoration:none;transition:color .2s;display:block;margin-bottom:8px;}
+.pd-footer a:hover{color:#C3A7FF;}
+
+/* ── Feat item ── */
+.feat-item{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:#C8C8DD;line-height:1.5;}
+.feat-check{width:18px;height:18px;border-radius:50%;flex-shrink:0;margin-top:1px;background:rgba(123,92,229,0.2);border:1px solid rgba(123,92,229,0.5);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#9B6FF0;}
+
+/* ── Noise ── */
+body::after{content:'';position:fixed;inset:0;z-index:100;pointer-events:none;opacity:.025;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+
+/* ── Animations ── */
+.fade-up{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease;}
+.fade-up.visible{opacity:1;transform:translateY(0);}
+
+/* ── Animated gradient text ── */
+.grad-text{background:linear-gradient(135deg,#9B6FF0,#C3A7FF,#E040FB,#9B6FF0);background-size:300% 300%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:gradShift 6s ease infinite;}
+.grad-text-warm{background:linear-gradient(135deg,#7B5CE5,#9B6FF0,#E040FB,#7B5CE5);background-size:300% 300%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:gradShift 6s ease infinite;}
+@keyframes gradShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+
+/* ── Floating blobs ── */
+.glow-blob{animation:blobFloat 8s ease-in-out infinite;}
+.glow-blob:nth-child(2){animation-duration:11s;animation-delay:-3s;}
+.glow-blob:nth-child(3){animation-duration:14s;animation-delay:-6s;}
+@keyframes blobFloat{0%,100%{transform:translateY(0) scale(1)}33%{transform:translateY(-20px) scale(1.05)}66%{transform:translateY(10px) scale(0.97)}}
+
+/* ── Page load fade in ── */
+body{animation:pageIn 0.5s ease both;}
+@keyframes pageIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── Typed text cursor ── */
+.typed-cursor{display:inline-block;width:3px;height:1em;background:linear-gradient(135deg,#9B6FF0,#E040FB);margin-left:4px;vertical-align:middle;animation:blink 1s step-end infinite;border-radius:2px;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+
+/* ── Gradient border cards ── */
+.feature-card{position:relative;background:#11112A;border:1px solid #1E1E4A;border-radius:14px;padding:24px;transition:all .3s ease;overflow:hidden;}
+.feature-card::before{content:'';position:absolute;inset:0;border-radius:14px;padding:1.5px;background:linear-gradient(135deg,#7B5CE5,#E040FB,#7B5CE5);background-size:200% 200%;-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .3s ease;animation:gradShift 3s ease infinite;}
+.feature-card:hover::before{opacity:1;}
+.feature-card:hover{transform:translateY(-6px);box-shadow:0 20px 60px rgba(123,92,229,0.2);}
+
+/* ── Colourful icon boxes ── */
+.icon-box-purple{background:rgba(123,92,229,0.15);border:1px solid rgba(123,92,229,0.4);}
+.icon-box-pink{background:rgba(224,64,251,0.12);border:1px solid rgba(224,64,251,0.3);}
+.icon-box-blue{background:rgba(56,139,255,0.12);border:1px solid rgba(56,139,255,0.3);}
+.icon-box-teal{background:rgba(29,158,117,0.12);border:1px solid rgba(29,158,117,0.3);}
+.icon-box-amber{background:rgba(255,171,0,0.12);border:1px solid rgba(255,171,0,0.3);}
+.icon-box-coral{background:rgba(255,90,90,0.12);border:1px solid rgba(255,90,90,0.3);}
+
+/* ── Counter animation ── */
+.counter{display:inline-block;transition:all .1s;}
+
+/* ── Stat card glow ── */
+.stat-strip__item{transition:all .3s ease;}
+.stat-strip__item:hover{background:#1A1A3A;box-shadow:inset 0 0 30px rgba(123,92,229,0.1);}
+
+/* ── Button pulse ── */
+.btn-primary{position:relative;overflow:hidden;}
+.btn-primary::after{content:'';position:absolute;inset:0;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,0.15) 50%,transparent 60%);transform:translateX(-100%);transition:transform .5s ease;}
+.btn-primary:hover::after{transform:translateX(100%);}
+
+/* ── Service card coloured icons ── */
+.svc-icon-1{background:rgba(123,92,229,0.15);border:1px solid rgba(123,92,229,0.4);}
+.svc-icon-2{background:rgba(56,189,248,0.12);border:1px solid rgba(56,189,248,0.35);}
+.svc-icon-3{background:rgba(224,64,251,0.12);border:1px solid rgba(224,64,251,0.3);}
+.svc-icon-4{background:rgba(52,211,153,0.12);border:1px solid rgba(52,211,153,0.3);}
+.svc-icon-5{background:rgba(251,146,60,0.12);border:1px solid rgba(251,146,60,0.3);}
+.svc-icon-6{background:rgba(248,113,113,0.12);border:1px solid rgba(248,113,113,0.3);}
+.svc-icon-7{background:rgba(167,139,250,0.12);border:1px solid rgba(167,139,250,0.3);}
+.svc-icon-8{background:rgba(34,211,238,0.12);border:1px solid rgba(34,211,238,0.3);}
+
+/* ── Industry card gradient border ── */
+.industry-card{position:relative;overflow:hidden;transition:all .3s ease;}
+.industry-card::after{content:'';position:absolute;inset:0;border-radius:16px;padding:1.5px;background:linear-gradient(135deg,#7B5CE5,#E040FB);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .3s;}
+.industry-card:hover::after{opacity:1;}
+.industry-card:hover{transform:translateY(-6px);box-shadow:0 24px 60px rgba(123,92,229,0.18);}
+
+/* ── Scroll reveal ── */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.reveal-left{opacity:0;transform:translateX(-30px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}
+.reveal-left.visible{opacity:1;transform:translateX(0);}
+.reveal-right{opacity:0;transform:translateX(30px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}
+.reveal-right.visible{opacity:1;transform:translateX(0);}
+
+/* ── Smooth scroll ── */
+html{scroll-behavior:smooth;}
+
+/* ── Ticker hover pause ── */
+.ticker-wrap:hover .ticker-track{animation-play-state:paused;}
+
+/* ── Process card hover ── */
+.process-card{transition:all .3s ease;}
+.process-card:hover{border-color:rgba(123,92,229,0.5);transform:translateY(-4px);box-shadow:0 16px 40px rgba(123,92,229,0.15);}
+
+/* ── Step circle pulse ── */
+.step-circle{animation:stepPulse 3s ease-in-out infinite;}
+@keyframes stepPulse{0%,100%{box-shadow:0 0 0 0 rgba(123,92,229,0)}50%{box-shadow:0 0 0 8px rgba(123,92,229,0.15)}}
+
+
+/* ── Mega Nav ── */
+.pd-nav{position:sticky;top:0;z-index:1000;backdrop-filter:blur(20px);background:rgba(11,11,26,0.92);border-bottom:1px solid #1E1E4A;}
+.pd-nav__inner{max-width:1200px;margin:0 auto;padding:0 24px;height:68px;display:flex;align-items:center;justify-content:space-between;}
+.pd-nav__logo{font-weight:800;font-size:19px;letter-spacing:-0.02em;text-decoration:none;color:#fff;display:flex;align-items:center;gap:10px;}
+.pd-nav__logo span{background:linear-gradient(135deg,#9B6FF0,#C3A7FF,#E040FB);background-size:200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:gradShift 6s ease infinite;}
+.pd-nav__links{display:flex;gap:4px;align-items:center;}
+.nav-item{position:relative;}
+.nav-link{color:#8888AA;font-size:14px;font-weight:500;text-decoration:none;padding:8px 14px;border-radius:8px;display:flex;align-items:center;gap:5px;transition:all .2s;cursor:pointer;background:transparent;border:none;font-family:'Inter',sans-serif;}
+.nav-link:hover,.nav-link.active{color:#fff;background:rgba(123,92,229,0.12);}
+.nav-link svg{transition:transform .2s;}
+.nav-item:hover .nav-link svg{transform:rotate(180deg);}
+.nav-link.active{color:#C3A7FF;}
+
+/* ── Dropdown panel ── */
+.nav-dropdown{position:absolute;top:calc(100% + 12px);left:50%;transform:translateX(-50%);background:#0F0F2A;border:1px solid #1E1E4A;border-radius:16px;padding:20px;min-width:560px;opacity:0;visibility:hidden;transform:translateX(-50%) translateY(-8px);transition:all .25s cubic-bezier(.16,1,.3,1);box-shadow:0 24px 80px rgba(0,0,0,0.5),0 0 0 1px rgba(123,92,229,0.1);}
+.nav-item:hover .nav-dropdown{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);}
+.nav-dropdown::before{content:'';position:absolute;top:-6px;left:50%;transform:translateX(-50%);width:12px;height:12px;background:#0F0F2A;border-left:1px solid #1E1E4A;border-top:1px solid #1E1E4A;transform:translateX(-50%) rotate(45deg);}
+.dropdown-grid{display:grid;gap:6px;}
+.dropdown-grid-2{grid-template-columns:1fr 1fr;}
+.dropdown-grid-3{grid-template-columns:1fr 1fr 1fr;}
+.dropdown-section-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#5A5A7A;margin-bottom:8px;padding-bottom:6px;border-bottom:1px solid #1E1E4A;}
+.dropdown-link{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:8px;text-decoration:none;transition:all .2s;color:#C8C8DD;}
+.dropdown-link:hover{background:rgba(123,92,229,0.12);color:#fff;}
+.dropdown-link:hover .dl-icon{border-color:rgba(123,92,229,0.6);background:rgba(123,92,229,0.2);}
+.dl-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:rgba(255,255,255,0.04);border:1px solid #2A2A4A;transition:all .2s;}
+.dl-title{font-size:13px;font-weight:600;color:#fff;margin-bottom:1px;}
+.dl-sub{font-size:11px;color:#5A5A7A;line-height:1.3;}
+
+/* ── Mobile nav toggle (simple) ── */
+.nav-toggle{display:none;background:transparent;border:1px solid #2A2A4A;border-radius:8px;padding:8px;cursor:pointer;color:#8888AA;}
+@media(max-width:900px){
+  .pd-nav__links{display:none;}
+  .nav-toggle{display:flex;align-items:center;justify-content:center;}
+}
+
+
+
+.service-card>*,.feature-card>*,.process-card>*,.industry-card>*,.testi-card>*{position:relative;z-index:1;}
+
+/* ════════════════════════════════════
+   FULL MOBILE RESPONSIVENESS
+════════════════════════════════════ */
+
+@media(max-width:1024px){
+  .pd-nav__links{gap:2px;}
+  .nav-link{padding:6px 10px;font-size:13px;}
+}
+
+@media(max-width:900px){
+  /* Nav */
+  .pd-nav__inner{padding:0 16px;}
+  .pd-nav__links{display:none;position:fixed;top:68px;left:0;right:0;bottom:0;background:#0B0B1A;flex-direction:column;padding:20px 16px;overflow-y:auto;gap:6px;z-index:999;}
+  .pd-nav__links.open{display:flex;}
+  .nav-item{width:100%;}
+  .nav-link{width:100%;justify-content:space-between;}
+  .nav-dropdown{position:static;transform:none!important;visibility:visible!important;opacity:1!important;min-width:100%!important;border:none;background:rgba(255,255,255,0.04);border-radius:8px;margin-top:4px;padding:12px;display:none;}
+  .nav-item.open .nav-dropdown{display:block;}
+  .nav-item.open .nav-link svg{transform:rotate(180deg);}
+  .nav-toggle{display:flex;}
+
+  /* Hero */
+  .svc-hero{padding:60px 16px 40px;min-height:auto;}
+  h1{font-size:clamp(2rem,7vw,3.5rem)!important;}
+
+  /* Grids */
+  .dropdown-grid-2,.dropdown-grid-3{grid-template-columns:1fr!important;}
+}
+
+@media(max-width:768px){
+  /* Sections */
+  section{padding:60px 16px!important;}
+  .cta-section{padding:60px 16px!important;}
+
+  /* Hero headline */
+  h1{font-size:clamp(1.8rem,8vw,3rem)!important;letter-spacing:-0.02em!important;}
+  h2{font-size:clamp(1.5rem,6vw,2.5rem)!important;}
+
+  /* Stat strip - stack on mobile */
+  .stat-strip{grid-template-columns:1fr!important;}
+  .stat-strip__item{border-left:none!important;border-right:none!important;border-bottom:1px solid #1E1E4A;}
+
+  /* 2-col grids go 1-col */
+  div[style*="grid-template-columns:repeat(2,1fr)"]{display:block!important;}
+  div[style*="grid-template-columns:1fr 1fr"]{display:block!important;}
+  div[style*="gap:48px"]{gap:24px!important;}
+  div[style*="gap:64px"]{gap:32px!important;}
+
+  /* Cards */
+  div[style*="grid-template-columns:repeat(auto-fit,minmax(280px"]{grid-template-columns:1fr!important;}
+  div[style*="grid-template-columns:repeat(auto-fit,minmax(240px"]{grid-template-columns:1fr!important;}
+  div[style*="grid-template-columns:repeat(auto-fit,minmax(260px"]{grid-template-columns:1fr!important;}
+  div[style*="grid-template-columns:repeat(auto-fit,minmax(300px"]{grid-template-columns:1fr!important;}
+  div[style*="grid-template-columns:repeat(3,1fr)"]{grid-template-columns:1fr!important;}
+  div[style*="grid-template-columns:repeat(4,1fr)"]{grid-template-columns:1fr 1fr!important;}
+
+  /* Pricing cards */
+  div[style*="grid-template-columns:repeat(4,1fr)"].price-grid{grid-template-columns:1fr!important;}
+  .price-card.featured{transform:none!important;}
+
+  /* How it works steps - stack vertically */
+  div[style*="display:flex;align-items:flex-start;gap:0"]{flex-direction:column!important;align-items:center!important;}
+  div[style*="padding-top:40px;width:80px;flex-shrink:0"]{width:2px!important;height:40px!important;padding:0!important;}
+  div[style*="padding-top:40px;width:80px"] div{width:2px;height:40px;background:linear-gradient(to bottom,rgba(123,92,229,0.5),rgba(123,92,229,0.1))!important;}
+
+  /* Footer grid */
+  div[style*="grid-template-columns:2fr 1fr 1fr 1fr 1fr"]{grid-template-columns:1fr 1fr!important;gap:24px!important;}
+
+  /* Buttons */
+  div[style*="display:flex;gap:12px;justify-content:center"]{flex-direction:column!important;align-items:center!important;}
+  .btn-primary,.btn-outline{width:100%;max-width:300px;justify-content:center!important;}
+
+  /* Nav dropdown */
+  .nav-dropdown{min-width:100%!important;}
+  .dropdown-grid-2{grid-template-columns:1fr!important;}
+  .dropdown-grid-3{grid-template-columns:1fr!important;}
+
+  /* Industry cards */
+  div[style*="grid-template-columns:repeat(2,1fr)"]{grid-template-columns:1fr!important;}
+
+  /* Ticker */
+  .ticker-item{padding:8px 20px;font-size:13px;}
+
+  /* CTA buttons flex */
+  div[style*="display:flex;gap:12px;flex-wrap:wrap"]{flex-direction:column;align-items:stretch;}
+
+  /* Contact form grid */
+  div[style*="grid-template-columns:1fr 1fr;gap:48px"]{grid-template-columns:1fr!important;}
+}
+
+@media(max-width:480px){
+  .pd-nav__logo{font-size:16px;}
+  h1{font-size:clamp(1.6rem,9vw,2.5rem)!important;}
+  h2{font-size:clamp(1.4rem,7vw,2rem)!important;}
+  div[style*="grid-template-columns:repeat(4,1fr)"]{grid-template-columns:1fr!important;}
+  div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important;}
+  .pd-footer div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr 1fr!important;}
+  section{padding:48px 14px!important;}
+  .container{padding:0 14px!important;}
+}
+
+
+/* ════════════════════════════════════════
+   NINJAPROMO EXACT CARD HOVER SYSTEM
+   Strong colour fills, bright borders,
+   glowing shadows per card
+════════════════════════════════════════ */
+
+/* ── Base card reset ── */
+.service-card,.feature-card,.process-card,.industry-card,.testi-card,.case-card{
+  position:relative;overflow:hidden;
+  transition:background .3s ease,border-color .3s ease,box-shadow .3s ease,transform .3s cubic-bezier(.16,1,.3,1);
+}
+
+/* ── Coloured top line that appears on hover ── */
+.service-card::after,.feature-card::after,.process-card::after{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  opacity:0;transition:opacity .3s ease;border-radius:0;
+}
+
+/* ══ SERVICE CARDS — each unique colour ══ */
+
+/* 1 - Paid Ads - Purple */
+.service-card:nth-child(1){border-color:#1E1E4A;}
+.service-card:nth-child(1):hover{
+  background:linear-gradient(145deg,#1A1040 0%,#120D30 100%)!important;
+  border-color:#7B5CE5!important;
+  box-shadow:0 0 0 1px #7B5CE5,0 20px 60px rgba(123,92,229,0.35);
+  transform:translateY(-6px);
+}
+.service-card:nth-child(1)::after{background:#7B5CE5;}
+.service-card:nth-child(1):hover::after{opacity:1;}
+
+/* 2 - SEO - Cyan/Blue */
+.service-card:nth-child(2){border-color:#1E1E4A;}
+.service-card:nth-child(2):hover{
+  background:linear-gradient(145deg,#0A1F35 0%,#071525 100%)!important;
+  border-color:#38BDF8!important;
+  box-shadow:0 0 0 1px #38BDF8,0 20px 60px rgba(56,189,248,0.3);
+  transform:translateY(-6px);
+}
+.service-card:nth-child(2)::after{background:#38BDF8;}
+.service-card:nth-child(2):hover::after{opacity:1;}
+
+/* 3 - Social - Pink/Magenta */
+.service-card:nth-child(3){border-color:#1E1E4A;}
+.service-card:nth-child(3):hover{
+  background:linear-gradient(145deg,#2A0A2E 0%,#1A0620 100%)!important;
+  border-color:#E040FB!important;
+  box-shadow:0 0 0 1px #E040FB,0 20px 60px rgba(224,64,251,0.3);
+  transform:translateY(-6px);
+}
+.service-card:nth-child(3)::after{background:#E040FB;}
+.service-card:nth-child(3):hover::after{opacity:1;}
+
+/* 4 - Content - Green/Teal */
+.service-card:nth-child(4){border-color:#1E1E4A;}
+.service-card:nth-child(4):hover{
+  background:linear-gradient(145deg,#0A2018 0%,#061510 100%)!important;
+  border-color:#34D399!important;
+  box-shadow:0 0 0 1px #34D399,0 20px 60px rgba(52,211,153,0.28);
+  transform:translateY(-6px);
+}
+.service-card:nth-child(4)::after{background:#34D399;}
+.service-card:nth-child(4):hover::after{opacity:1;}
+
+/* 5 - Influencer - Amber */
+.service-card:nth-child(5){border-color:#1E1E4A;}
+.service-card:nth-child(5):hover{
+  background:linear-gradient(145deg,#241800 0%,#160F00 100%)!important;
+  border-color:#FBBF24!important;
+  box-shadow:0 0 0 1px #FBBF24,0 20px 60px rgba(251,191,36,0.25);
+  transform:translateY(-6px);
+}
+.service-card:nth-child(5)::after{background:#FBBF24;}
+.service-card:nth-child(5):hover::after{opacity:1;}
+
+/* 6 - Web3 - Red/Coral */
+.service-card:nth-child(6){border-color:#1E1E4A;}
+.service-card:nth-child(6):hover{
+  background:linear-gradient(145deg,#2A0A0A 0%,#1A0606 100%)!important;
+  border-color:#F87171!important;
+  box-shadow:0 0 0 1px #F87171,0 20px 60px rgba(248,113,113,0.28);
+  transform:translateY(-6px);
+}
+.service-card:nth-child(6)::after{background:#F87171;}
+.service-card:nth-child(6):hover::after{opacity:1;}
+
+/* 7 - CRO - Violet */
+.service-card:nth-child(7){border-color:#1E1E4A;}
+.service-card:nth-child(7):hover{
+  background:linear-gradient(145deg,#1A103A 0%,#100A28 100%)!important;
+  border-color:#A78BFA!important;
+  box-shadow:0 0 0 1px #A78BFA,0 20px 60px rgba(167,139,250,0.3);
+  transform:translateY(-6px);
+}
+.service-card:nth-child(7)::after{background:#A78BFA;}
+.service-card:nth-child(7):hover::after{opacity:1;}
+
+/* 8 - Branding - Cyan */
+.service-card:nth-child(8){border-color:#1E1E4A;}
+.service-card:nth-child(8):hover{
+  background:linear-gradient(145deg,#062025 0%,#041518 100%)!important;
+  border-color:#22D3EE!important;
+  box-shadow:0 0 0 1px #22D3EE,0 20px 60px rgba(34,211,238,0.28);
+  transform:translateY(-6px);
+}
+.service-card:nth-child(8)::after{background:#22D3EE;}
+.service-card:nth-child(8):hover::after{opacity:1;}
+
+/* ══ FEATURE CARDS — alternating colours ══ */
+.feature-card:nth-child(1):hover,.feature-card:nth-child(5):hover,.feature-card:nth-child(9):hover{
+  background:linear-gradient(145deg,#1A1040 0%,#120D30 100%)!important;
+  border-color:#7B5CE5!important;
+  box-shadow:0 0 0 1px #7B5CE5,0 16px 48px rgba(123,92,229,0.3);
+  transform:translateY(-5px);
+}
+.feature-card:nth-child(2):hover,.feature-card:nth-child(6):hover{
+  background:linear-gradient(145deg,#0A1F35 0%,#071525 100%)!important;
+  border-color:#38BDF8!important;
+  box-shadow:0 0 0 1px #38BDF8,0 16px 48px rgba(56,189,248,0.28);
+  transform:translateY(-5px);
+}
+.feature-card:nth-child(3):hover,.feature-card:nth-child(7):hover{
+  background:linear-gradient(145deg,#2A0A2E 0%,#1A0620 100%)!important;
+  border-color:#E040FB!important;
+  box-shadow:0 0 0 1px #E040FB,0 16px 48px rgba(224,64,251,0.28);
+  transform:translateY(-5px);
+}
+.feature-card:nth-child(4):hover,.feature-card:nth-child(8):hover{
+  background:linear-gradient(145deg,#0A2018 0%,#061510 100%)!important;
+  border-color:#34D399!important;
+  box-shadow:0 0 0 1px #34D399,0 16px 48px rgba(52,211,153,0.25);
+  transform:translateY(-5px);
+}
+
+/* Top accent line on feature cards */
+.feature-card:nth-child(1)::after,.feature-card:nth-child(5)::after,.feature-card:nth-child(9)::after{background:#7B5CE5;}
+.feature-card:nth-child(2)::after,.feature-card:nth-child(6)::after{background:#38BDF8;}
+.feature-card:nth-child(3)::after,.feature-card:nth-child(7)::after{background:#E040FB;}
+.feature-card:nth-child(4)::after,.feature-card:nth-child(8)::after{background:#34D399;}
+.feature-card:hover::after{opacity:1;}
+
+/* ══ PROCESS CARDS ══ */
+.process-card::after{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  opacity:0;transition:opacity .3s ease;
+}
+.process-card:nth-child(1):hover{
+  background:linear-gradient(145deg,#1A1040,#120D30)!important;
+  border-color:#7B5CE5!important;
+  box-shadow:0 0 0 1px #7B5CE5,0 12px 40px rgba(123,92,229,0.25);
+  transform:translateY(-4px);
+}
+.process-card:nth-child(1)::after{background:#7B5CE5;}
+.process-card:nth-child(2):hover{
+  background:linear-gradient(145deg,#0A1F35,#071525)!important;
+  border-color:#38BDF8!important;
+  box-shadow:0 0 0 1px #38BDF8,0 12px 40px rgba(56,189,248,0.25);
+  transform:translateY(-4px);
+}
+.process-card:nth-child(2)::after{background:#38BDF8;}
+.process-card:nth-child(3):hover{
+  background:linear-gradient(145deg,#0A2018,#061510)!important;
+  border-color:#34D399!important;
+  box-shadow:0 0 0 1px #34D399,0 12px 40px rgba(52,211,153,0.22);
+  transform:translateY(-4px);
+}
+.process-card:nth-child(3)::after{background:#34D399;}
+.process-card:nth-child(4):hover{
+  background:linear-gradient(145deg,#241800,#160F00)!important;
+  border-color:#FBBF24!important;
+  box-shadow:0 0 0 1px #FBBF24,0 12px 40px rgba(251,191,36,0.22);
+  transform:translateY(-4px);
+}
+.process-card:nth-child(4)::after{background:#FBBF24;}
+.process-card:hover::after{opacity:1;}
+
+/* ══ INDUSTRY CARDS ══ */
+.industry-card::after{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  opacity:0;transition:opacity .3s ease;
+}
+/* Real Estate - Purple */
+.industry-card:nth-child(1):hover{
+  background:linear-gradient(145deg,#1A1040 0%,#110C2E 100%)!important;
+  border-color:#7B5CE5!important;
+  box-shadow:0 0 0 1px #7B5CE5,0 24px 70px rgba(123,92,229,0.35);
+  transform:translateY(-8px);
+}
+.industry-card:nth-child(1)::after{background:linear-gradient(90deg,#7B5CE5,#E040FB);}
+/* SRI Finance - Green */
+.industry-card:nth-child(2):hover{
+  background:linear-gradient(145deg,#0A2018 0%,#061510 100%)!important;
+  border-color:#34D399!important;
+  box-shadow:0 0 0 1px #34D399,0 24px 70px rgba(52,211,153,0.3);
+  transform:translateY(-8px);
+}
+.industry-card:nth-child(2)::after{background:linear-gradient(90deg,#34D399,#22D3EE);}
+/* Esports - Amber */
+.industry-card:nth-child(3):hover{
+  background:linear-gradient(145deg,#241800 0%,#160F00 100%)!important;
+  border-color:#FBBF24!important;
+  box-shadow:0 0 0 1px #FBBF24,0 24px 70px rgba(251,191,36,0.28);
+  transform:translateY(-8px);
+}
+.industry-card:nth-child(3)::after{background:linear-gradient(90deg,#FBBF24,#F87171);}
+/* Web3 - Pink/Magenta */
+.industry-card:nth-child(4):hover{
+  background:linear-gradient(145deg,#2A0A2E 0%,#1A0620 100%)!important;
+  border-color:#E040FB!important;
+  box-shadow:0 0 0 1px #E040FB,0 24px 70px rgba(224,64,251,0.3);
+  transform:translateY(-8px);
+}
+.industry-card:nth-child(4)::after{background:linear-gradient(90deg,#E040FB,#7B5CE5);}
+.industry-card:hover::after{opacity:1;}
+
+/* ══ TESTIMONIAL CARDS ══ */
+.testi-card:nth-child(1):hover{
+  background:linear-gradient(145deg,#1A1040,#120D30)!important;
+  border-color:#7B5CE5!important;
+  box-shadow:0 0 0 1px #7B5CE5,0 16px 50px rgba(123,92,229,0.28);
+  transform:translateY(-4px);
+}
+.testi-card:nth-child(2):hover{
+  background:linear-gradient(145deg,#0A1F35,#071525)!important;
+  border-color:#38BDF8!important;
+  box-shadow:0 0 0 1px #38BDF8,0 16px 50px rgba(56,189,248,0.25);
+  transform:translateY(-4px);
+}
+.testi-card:nth-child(3):hover{
+  background:linear-gradient(145deg,#2A0A2E,#1A0620)!important;
+  border-color:#E040FB!important;
+  box-shadow:0 0 0 1px #E040FB,0 16px 50px rgba(224,64,251,0.25);
+  transform:translateY(-4px);
+}
+
+/* ══ CASE STUDY CARDS ══ */
+.case-card:nth-child(1):hover{
+  border-color:#7B5CE5!important;
+  box-shadow:0 0 0 1px #7B5CE5,0 20px 60px rgba(123,92,229,0.3);
+  background:#0F0A28!important;
+  transform:translateY(-6px);
+}
+.case-card:nth-child(2):hover{
+  border-color:#34D399!important;
+  box-shadow:0 0 0 1px #34D399,0 20px 60px rgba(52,211,153,0.25);
+  background:#061510!important;
+  transform:translateY(-6px);
+}
+.case-card:nth-child(3):hover{
+  border-color:#FBBF24!important;
+  box-shadow:0 0 0 1px #FBBF24,0 20px 60px rgba(251,191,36,0.22);
+  background:#160F00!important;
+  transform:translateY(-6px);
+}
+
+/* ══ PRICE CARDS ══ */
+.price-card:not(.featured):hover{
+  background:linear-gradient(145deg,#1A1040,#120D30)!important;
+  border-color:#7B5CE5!important;
+  box-shadow:0 0 0 1px #7B5CE5,0 20px 60px rgba(123,92,229,0.25);
+  transform:translateY(-4px);
+}
+
+/* ══ ICON BOXES change colour on card hover ── */
+.service-card:nth-child(1):hover .icon-box{background:rgba(123,92,229,0.3)!important;border-color:#7B5CE5!important;}
+.service-card:nth-child(2):hover .icon-box{background:rgba(56,189,248,0.25)!important;border-color:#38BDF8!important;}
+.service-card:nth-child(3):hover .icon-box{background:rgba(224,64,251,0.25)!important;border-color:#E040FB!important;}
+.service-card:nth-child(4):hover .icon-box{background:rgba(52,211,153,0.25)!important;border-color:#34D399!important;}
+.service-card:nth-child(5):hover .icon-box{background:rgba(251,191,36,0.25)!important;border-color:#FBBF24!important;}
+.service-card:nth-child(6):hover .icon-box{background:rgba(248,113,113,0.25)!important;border-color:#F87171!important;}
+.service-card:nth-child(7):hover .icon-box{background:rgba(167,139,250,0.25)!important;border-color:#A78BFA!important;}
+.service-card:nth-child(8):hover .icon-box{background:rgba(34,211,238,0.25)!important;border-color:#22D3EE!important;}
+
+/* ══ STEP CIRCLES change on process card hover ── */
+.process-card:nth-child(1):hover .step-circle{background:rgba(123,92,229,0.3)!important;border-color:#7B5CE5!important;color:#C3A7FF!important;}
+.process-card:nth-child(2):hover .step-circle{background:rgba(56,189,248,0.25)!important;border-color:#38BDF8!important;color:#7DD3FC!important;}
+.process-card:nth-child(3):hover .step-circle{background:rgba(52,211,153,0.25)!important;border-color:#34D399!important;color:#6EE7B7!important;}
+.process-card:nth-child(4):hover .step-circle{background:rgba(251,191,36,0.25)!important;border-color:#FBBF24!important;color:#FCD34D!important;}
+
+/* ══ Remove old conflicting hover styles ── */
+.feature-card::before,.service-card::before,.industry-card::before,
+.process-card::before,.testi-card::before{display:none!important;}
+
+</style>
+</head>
+<body>
+<nav class="pd-nav">
+  <div class="pd-nav__inner">
+    <a href="index.html" class="pd-nav__logo">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+        <rect x="1" y="10" width="3" height="10" rx="1.5" fill="url(#nl)" opacity="0.35"/>
+        <rect x="6" y="6" width="3" height="18" rx="1.5" fill="url(#nl)" opacity="0.55"/>
+        <rect x="11" y="2" width="3" height="24" rx="1.5" fill="url(#nl)"/>
+        <rect x="16" y="7" width="3" height="16" rx="1.5" fill="url(#nl)" opacity="0.65"/>
+        <rect x="21" y="12" width="3" height="8" rx="1.5" fill="url(#nl)" opacity="0.35"/>
+        <defs><linearGradient id="nl" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#7B5CE5"/><stop offset="100%" stop-color="#E040FB"/></linearGradient></defs>
+      </svg>
+      Pulse<span>Devix</span>
+    </a>
+
+    <div class="pd-nav__links">
+
+      <!-- Services dropdown -->
+      <div class="nav-item">
+        <button class="nav-link">
+          Services
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="#8888AA" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <div class="nav-dropdown" style="min-width:600px;">
+          <div class="dropdown-section-label">All Services</div>
+          <div class="dropdown-grid dropdown-grid-2">
+            <a href="service-paid-ads.html" class="dropdown-link">
+              <div class="dl-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="5" width="5" height="5" rx="1" stroke="#9B6FF0" stroke-width="1.2"/><rect x="9" y="1" width="5" height="5" rx="1" stroke="#E040FB" stroke-width="1.2"/><rect x="1" y="10" width="5" height="5" rx="1" stroke="#9B6FF0" stroke-width="1.2" opacity=".5"/><rect x="9" y="10" width="5" height="5" rx="1" stroke="#E040FB" stroke-width="1.2" opacity=".5"/></svg></div>
+              <div><div class="dl-title">Paid Advertising</div><div class="dl-sub">Meta, Google, TikTok</div></div>
+            </a>
+            <a href="service-seo.html" class="dropdown-link">
+              <div class="dl-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="#38BDF8" stroke-width="1.2"/><path d="M8 2c0 0-2 2.5-2 6s2 6 2 6" stroke="#38BDF8" stroke-width="1.2" opacity=".6"/><path d="M2 8h12" stroke="#38BDF8" stroke-width="1.2" opacity=".6"/></svg></div>
+              <div><div class="dl-title">SEO</div><div class="dl-sub">Technical, local, content</div></div>
+            </a>
+            <a href="service-social.html" class="dropdown-link">
+              <div class="dl-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 12l3-4 3 3 2-4 3 5" stroke="#E040FB" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="13" cy="3" r="1.5" fill="#E040FB" opacity=".6"/></svg></div>
+              <div><div class="dl-title">Social Media</div><div class="dl-sub">7 platforms managed</div></div>
+            </a>
+            <a href="service-content.html" class="dropdown-link">
+              <div class="dl-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 4h12M2 7h8M2 10h10M2 13h6" stroke="#34D399" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+              <div><div class="dl-title">Content Marketing</div><div class="dl-sub">Blogs, scripts, copy</div></div>
+            </a>
+            <a href="service-influencer.html" class="dropdown-link">
+              <div class="dl-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2l1.5 4H14l-3.5 2.5 1.5 4L8 10 4 12.5l1.5-4L2 6h4.5L8 2z" stroke="#FBBF24" stroke-width="1.2" stroke-linejoin="round"/></svg></div>
+              <div><div class="dl-title">Influencer Marketing</div><div class="dl-sub">Vetted creators, ROI-tracked</div></div>
+            </a>
+            <a href="service-web3.html" class="dropdown-link">
+              <div class="dl-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1l5 3v4c0 4-2.5 5.5-5 6-2.5-.5-5-2-5-6V4l5-3z" stroke="#FB7185" stroke-width="1.2" stroke-linejoin="round"/></svg></div>
+              <div><div class="dl-title">Web3 Marketing</div><div class="dl-sub">Token launches, NFT, DAO</div></div>
+            </a>
+            <a href="service-cro.html" class="dropdown-link">
+              <div class="dl-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 11l3-4 3 2.5 2-4 3 5.5" stroke="#A78BFA" stroke-width="1.2" stroke-linecap="round"/><rect x="1" y="1" width="14" height="14" rx="2" stroke="#A78BFA" stroke-width="1.2" opacity=".3"/></svg></div>
+              <div><div class="dl-title">CRO</div><div class="dl-sub">A/B testing, funnel fixes</div></div>
+            </a>
+            <a href="service-branding.html" class="dropdown-link">
+              <div class="dl-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="9" width="12" height="5" rx="1.5" stroke="#22D3EE" stroke-width="1.2"/><path d="M5 9V6a3 3 0 016 0v3" stroke="#22D3EE" stroke-width="1.2"/><circle cx="8" cy="11.5" r="1" fill="#22D3EE" opacity=".6"/></svg></div>
+              <div><div class="dl-title">Branding & Design</div><div class="dl-sub">Identity, UI/UX, assets</div></div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Industries dropdown -->
+      <div class="nav-item">
+        <button class="nav-link">
+          Industries
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="#8888AA" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <div class="nav-dropdown" style="min-width:420px;">
+          <div class="dropdown-section-label">Industry Verticals</div>
+          <div class="dropdown-grid dropdown-grid-2">
+            <a href="industry-real-estate.html" class="dropdown-link">
+              <div class="dl-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="7" width="12" height="7" rx="1" stroke="#9B6FF0" stroke-width="1.2"/><path d="M6 7V5a2 2 0 014 0v2" stroke="#9B6FF0" stroke-width="1.2"/><path d="M5 7V4.5a3 3 0 016 0V7" stroke="#9B6FF0" stroke-width="1.2" opacity=".4"/></svg></div>
+              <div><div class="dl-title">Real Estate</div><div class="dl-sub">Property & development</div></div>
+            </a>
+            <a href="industry-finance.html" class="dropdown-link">
+              <div class="dl-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2l6 3.5v3C14 12 11.5 14 8 15c-3.5-1-6-3-6-6.5V5.5L8 2z" stroke="#34D399" stroke-width="1.2" stroke-linejoin="round"/><path d="M6 8l1.5 1.5L10 6" stroke="#34D399" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+              <div><div class="dl-title">SRI Finance</div><div class="dl-sub">Ethical & responsible</div></div>
+            </a>
+            <a href="industry-esports.html" class="dropdown-link">
+              <div class="dl-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="4" width="12" height="9" rx="1.5" stroke="#FBBF24" stroke-width="1.2"/><path d="M7 6.5v4M5 8.5h4" stroke="#FBBF24" stroke-width="1.2" stroke-linecap="round"/><circle cx="10.5" cy="8.5" r="1" fill="#FBBF24" opacity=".6"/></svg></div>
+              <div><div class="dl-title">Esports</div><div class="dl-sub">Gaming & competitive</div></div>
+            </a>
+            <a href="industry-web3.html" class="dropdown-link">
+              <div class="dl-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1l6 3.5-6 3.5L2 4.5 8 1z" stroke="#E040FB" stroke-width="1.2" stroke-linejoin="round"/><path d="M2 4.5v4L8 12v-4" stroke="#E040FB" stroke-width="1.2" stroke-linejoin="round"/><path d="M14 4.5v4L8 12" stroke="#E040FB" stroke-width="1.2" stroke-linejoin="round" opacity=".5"/></svg></div>
+              <div><div class="dl-title">Web3 & Crypto</div><div class="dl-sub">Token, NFT, DeFi</div></div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <a href="index.html#cases" class="nav-link">Case Studies</a>
+      <a href="index.html#pricing" class="nav-link">Pricing</a>
+      <a href="about.html" class="nav-link">About</a>
+    </div>
+
+    <div style="display:flex;align-items:center;gap:10px;">
+      <a href="contact.html" class="btn-primary btn-primary-sm">Book Intro Call</a>
+    </div>
+  </div>
+</nav>
+
+<section class="svc-hero dot-grid">
+  <div class="glow-blob" style="width:600px;height:600px;background:radial-gradient(circle,rgba(123,92,229,0.2) 0%,transparent 70%);top:-100px;left:50%;transform:translateX(-50%);"></div>
+  <div class="glow-blob" style="width:300px;height:300px;background:rgba(224,64,251,0.08);top:30%;right:-60px;"></div>
+  <div class="container" style="position:relative;z-index:1;width:100%;">
+    <div class="breadcrumb fade-up">
+      <a href="index.html">Home</a><span>/</span>
+      <a href="industry-real-estate.html">Industries</a><span>/</span>
+      <span style="color:#C3A7FF;">Web3 & Crypto</span>
+    </div>
+    <div class="badge fade-up" style="margin-bottom:24px;"><span class="dot"></span>Blockchain, Token & NFT Marketing</div>
+    <h1 class="fade-up" style="font-size:clamp(2.5rem,6vw,5rem);font-weight:900;line-height:1.05;letter-spacing:-0.03em;max-width:700px;margin-bottom:20px;">
+      Token Launches.<br/><span class="grad-text">Community That Holds.</span>
+    </h1>
+    <p class="fade-up" style="font-size:clamp(1rem,1.6vw,1.1rem);color:#8888AA;line-height:1.7;max-width:580px;margin-bottom:36px;">Marketing for blockchain protocols, token projects, NFT collections, and DeFi platforms. Built for both on-chain audiences and mainstream markets.</p>
+    <div class="fade-up" style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:56px;">
+      <a href="contact.html" class="btn-primary">Book Intro Call →</a>
+      <a href="index.html#pricing" class="btn-outline">See Pricing</a>
+    </div>
+    <div class="stat-strip fade-up"><div class="stat-strip__item">
+      <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#5A5A7A;margin-bottom:6px;">Community members built</div>
+      <div style="font-size:2rem;font-weight:900;letter-spacing:-0.04em;" class="grad-text">40k+</div>
+      <div style="font-size:11px;color:#5A5A7A;margin-top:4px;">across Web3 projects</div>
+    </div><div class="stat-strip__item">
+      <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#5A5A7A;margin-bottom:6px;">Token launches managed</div>
+      <div style="font-size:2rem;font-weight:900;letter-spacing:-0.04em;" class="grad-text">9</div>
+      <div style="font-size:11px;color:#5A5A7A;margin-top:4px;">to date</div>
+    </div><div class="stat-strip__item">
+      <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#5A5A7A;margin-bottom:6px;">Average mint-day ROI</div>
+      <div style="font-size:2rem;font-weight:900;letter-spacing:-0.04em;" class="grad-text">2.8×</div>
+      <div style="font-size:11px;color:#5A5A7A;margin-top:4px;">on NFT campaigns</div>
+    </div></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section style="padding:80px 24px;">
+  <div class="container">
+    <div style="margin-bottom:48px;">
+      <div class="sec-label" style="margin-bottom:12px;">Industry Challenges We Solve</div>
+      <h2 style="font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;letter-spacing:-0.03em;">
+        We Know This Industry.<br/><span class="grad-text-warm">Inside and Out.</span>
+      </h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;">
+      <div class="feature-card fade-up">
+      <div style="font-size:15px;font-weight:700;margin-bottom:8px;color:#fff;">Community Cold Start</div>
+      <div style="font-size:13px;color:#8888AA;line-height:1.65;">Every Web3 project starts with zero community. We build Discord and Telegram communities from scratch — with real members, not bots.</div>
+    </div><div class="feature-card fade-up">
+      <div style="font-size:15px;font-weight:700;margin-bottom:8px;color:#fff;">Token Launch Coordination</div>
+      <div style="font-size:13px;color:#8888AA;line-height:1.65;">TGE day is chaos if you're not prepared. We coordinate marketing, KOLs, exchange announcements, and community management into one launch playbook.</div>
+    </div><div class="feature-card fade-up">
+      <div style="font-size:15px;font-weight:700;margin-bottom:8px;color:#fff;">Post-Launch Retention</div>
+      <div style="font-size:13px;color:#8888AA;line-height:1.65;">Most projects die after mint or TGE. We build post-launch content calendars and community programmes that keep holders engaged.</div>
+    </div><div class="feature-card fade-up">
+      <div style="font-size:15px;font-weight:700;margin-bottom:8px;color:#fff;">Mainstream Crossover</div>
+      <div style="font-size:13px;color:#8888AA;line-height:1.65;">Reaching beyond crypto-native audiences requires different channels and messaging. We bridge the gap between Web3 and mainstream markets.</div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section style="padding:80px 24px;background:#080D1F;">
+  <div class="container">
+    <div style="margin-bottom:40px;">
+      <div class="sec-label" style="margin-bottom:12px;">Services for Web3 & Crypto</div>
+      <h2 style="font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;letter-spacing:-0.03em;">
+        Every Service.<br/><span class="grad-text">One Subscription.</span>
+      </h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;">
+      <div style="background:#11112A;border:1px solid #1E1E4A;border-radius:12px;padding:20px 22px;">
+      <div style="font-size:14px;font-weight:700;color:#C3A7FF;margin-bottom:6px;">Token Launch Marketing</div>
+      <div style="font-size:13px;color:#8888AA;line-height:1.6;">Pre-launch hype, TGE campaigns, and exchange listing announcements across Twitter, Telegram, and Discord.</div>
+    </div><div style="background:#11112A;border:1px solid #1E1E4A;border-radius:12px;padding:20px 22px;">
+      <div style="font-size:14px;font-weight:700;color:#C3A7FF;margin-bottom:6px;">NFT Drop Campaigns</div>
+      <div style="font-size:13px;color:#8888AA;line-height:1.6;">Whitelist building, countdown campaigns, and mint-day execution for NFT collections.</div>
+    </div><div style="background:#11112A;border:1px solid #1E1E4A;border-radius:12px;padding:20px 22px;">
+      <div style="font-size:14px;font-weight:700;color:#C3A7FF;margin-bottom:6px;">KOL & Crypto Influencer</div>
+      <div style="font-size:13px;color:#8888AA;line-height:1.6;">Verified crypto Key Opinion Leaders with real on-chain audiences — not paid shillers.</div>
+    </div><div style="background:#11112A;border:1px solid #1E1E4A;border-radius:12px;padding:20px 22px;">
+      <div style="font-size:14px;font-weight:700;color:#C3A7FF;margin-bottom:6px;">Community Management</div>
+      <div style="font-size:13px;color:#8888AA;line-height:1.6;">Discord and Telegram community setup, moderation, and engagement programmes that retain holders.</div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section style="padding:80px 24px;">
+  <div class="container">
+    <div style="margin-bottom:40px;text-align:center;">
+      <div class="sec-label" style="margin-bottom:12px;">Results</div>
+      <h2 style="font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;letter-spacing:-0.03em;">Numbers That Matter.</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#1E1E4A;border-radius:14px;overflow:hidden;border:1px solid #1E1E4A;margin-bottom:48px;">
+      <div style="text-align:center;background:#11112A;padding:28px 20px;">
+      <div style="font-size:2rem;font-weight:900;letter-spacing:-0.04em;" class="grad-text">40k+</div>
+      <div style="font-size:12px;color:#8888AA;margin-top:4px;">Community Built</div>
+    </div><div style="text-align:center;background:#11112A;padding:28px 20px;">
+      <div style="font-size:2rem;font-weight:900;letter-spacing:-0.04em;" class="grad-text">9</div>
+      <div style="font-size:12px;color:#8888AA;margin-top:4px;">Token Launches</div>
+    </div><div style="text-align:center;background:#11112A;padding:28px 20px;">
+      <div style="font-size:2rem;font-weight:900;letter-spacing:-0.04em;" class="grad-text">2.8×</div>
+      <div style="font-size:12px;color:#8888AA;margin-top:4px;">Mint-day ROI</div>
+    </div><div style="text-align:center;background:#11112A;padding:28px 20px;">
+      <div style="font-size:2rem;font-weight:900;letter-spacing:-0.04em;" class="grad-text">100%</div>
+      <div style="font-size:12px;color:#8888AA;margin-top:4px;">Post-launch retention programme</div>
+    </div>
+    </div>
+
+    <div style="background:#11112A;border:1px solid #1E1E4A;border-radius:16px;padding:32px;">
+      <div style="display:flex;gap:4px;margin-bottom:16px;"><span style="color:#9B6FF0;font-size:18px;">★★★★★</span></div>
+      <p style="font-size:15px;color:#C8C8DD;line-height:1.8;margin-bottom:24px;font-style:italic;">"Our TGE was our most coordinated launch ever. PulseDevix handled the KOLs, the community hype, and the exchange announcement timing. We hit our hard cap in 6 hours."</p>
+      <div style="display:flex;align-items:center;gap:14px;padding-top:20px;border-top:1px solid #1E1E4A;">
+        <div style="width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#7B5CE5,#E040FB);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;flex-shrink:0;">BC</div>
+        <div>
+          <div style="font-size:14px;font-weight:700;">Bilal Chaudhry</div>
+          <div style="font-size:12px;color:#5A5A7A;">Founder — DeFi Protocol, Lahore</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section style="padding:60px 24px;">
+  <div class="container">
+    <div class="sec-label" style="margin-bottom:20px;">Other Industries</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;">
+      <a href="industry-esports.html" class="service-link-card">
+      <span style="font-size:14px;font-weight:600;color:#C3A7FF;">Esports</span>
+      <span style="color:#5A5A7A;font-size:18px;">→</span>
+    </a><a href="industry-real-estate.html" class="service-link-card">
+      <span style="font-size:14px;font-weight:600;color:#C3A7FF;">Real Estate</span>
+      <span style="color:#5A5A7A;font-size:18px;">→</span>
+    </a><a href="industry-finance.html" class="service-link-card">
+      <span style="font-size:14px;font-weight:600;color:#C3A7FF;">SRI Finance</span>
+      <span style="color:#5A5A7A;font-size:18px;">→</span>
+    </a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="cta-section">
+  <div class="glow-blob" style="width:600px;height:400px;background:radial-gradient(ellipse,rgba(123,92,229,0.18) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);"></div>
+  <div style="position:relative;z-index:1;max-width:640px;margin:0 auto;">
+    <div class="sec-label" style="margin-bottom:20px;">Ready to Grow?</div>
+    <h2 style="font-size:clamp(2rem,5vw,3.5rem);font-weight:900;letter-spacing:-0.04em;line-height:1.05;margin-bottom:20px;">
+      Book a Call.<br/><span class="grad-text">We'll Handle the Rest.</span>
+    </h2>
+    <p style="font-size:15px;color:#8888AA;line-height:1.7;margin-bottom:32px;">Tell us your goals. We scope the right hours, assign your Web3 & Crypto specialist team, and get started within 48 hours.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:16px;">
+      <a href="contact.html" class="btn-primary" style="font-size:16px;padding:16px 32px;">Book Intro Call →</a>
+      <a href="index.html#pricing" class="btn-outline" style="font-size:16px;padding:16px 32px;">See Pricing</a>
+    </div>
+    <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#5A5A7A;">No contracts · Pause anytime · 48h onboarding</div>
+  </div>
+</section>
+<footer class="pd-footer">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px;">
+      <div>
+        <div style="font-weight:800;font-size:20px;letter-spacing:-0.02em;margin-bottom:16px;">Pulse<span class="grad-text">Devix</span></div>
+        <p style="font-size:13px;color:#5A5A7A;line-height:1.7;max-width:240px;margin-bottom:20px;">Marketing-as-a-Service for Real Estate, SRI Finance, Esports, and Web3. One subscription. Full team.</p>
+        <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#5A5A7A;">Lahore, Pakistan · USA</div>
+      </div>
+      <div>
+        <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#5A5A7A;margin-bottom:16px;">Services</div>
+        <a href="service-paid-ads.html">Paid Advertising</a>
+        <a href="service-seo.html">SEO</a>
+        <a href="service-social.html">Social Media</a>
+        <a href="service-content.html">Content</a>
+        <a href="service-influencer.html">Influencer</a>
+        <a href="service-web3.html">Web3 Marketing</a>
+        <a href="service-cro.html">CRO</a>
+        <a href="service-branding.html">Branding</a>
+      </div>
+      <div>
+        <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#5A5A7A;margin-bottom:16px;">Industries</div>
+        <a href="industry-real-estate.html">Real Estate</a>
+        <a href="industry-finance.html">SRI Finance</a>
+        <a href="industry-esports.html">Esports</a>
+        <a href="industry-web3.html">Web3</a>
+      </div>
+      <div>
+        <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#5A5A7A;margin-bottom:16px;">Company</div>
+        <a href="about.html">About Us</a>
+        <a href="team.html">Our Team</a>
+        <a href="index.html#cases">Case Studies</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div>
+        <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#5A5A7A;margin-bottom:16px;">Contact</div>
+        <a href="contact.html">Book Intro Call</a>
+        <a href="mailto:hello@pulsedevix.com">hello@pulsedevix.com</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">Instagram</a>
+      </div>
+    </div>
+    <div style="border-top:1px solid #1E1E4A;padding-top:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+      <div style="font-size:12px;color:#5A5A7A;">© 2026 PulseDevix. All rights reserved.</div>
+      <div style="display:flex;gap:20px;">
+        <a href="#" style="font-size:12px;color:#5A5A7A;text-decoration:none;">Privacy Policy</a>
+        <a href="#" style="font-size:12px;color:#5A5A7A;text-decoration:none;">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ── Intersection observer for reveals ── */
+var ro=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){e.target.classList.add('visible');}
+  });
+},{threshold:0.1});
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.fade-up').forEach(function(el){
+  el.classList.add('reveal');
+  ro.observe(el);
+});
+
+/* ── Counter animation ── */
+function animateCounter(el){
+  var target=parseFloat(el.dataset.target||el.innerText.replace(/[^0-9.]/g,''));
+  var suffix=el.dataset.suffix||'';
+  var prefix=el.dataset.prefix||'';
+  var duration=2000;
+  var start=null;
+  var isFloat=target%1!==0;
+  function step(ts){
+    if(!start)start=ts;
+    var prog=Math.min((ts-start)/duration,1);
+    var ease=1-Math.pow(1-prog,4);
+    var val=target*ease;
+    el.innerText=prefix+(isFloat?val.toFixed(1):Math.floor(val))+suffix;
+    if(prog<1)requestAnimationFrame(step);
+    else el.innerText=prefix+target+suffix;
+  }
+  requestAnimationFrame(step);
+}
+
+/* ── Observe stat numbers ── */
+var co=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting&&!e.target.dataset.counted){
+      e.target.dataset.counted='1';
+      animateCounter(e.target);
+    }
+  });
+},{threshold:0.5});
+
+/* Find grad-text elements that are numbers */
+document.querySelectorAll('.grad-text,.stat-strip__item div[style*="font-size:2"]').forEach(function(el){
+  var txt=el.innerText.trim();
+  if(/^[\d.]+/.test(txt)){
+    var m=txt.match(/^([\d.]+)(.*)/);
+    if(m){
+      el.dataset.target=m[1];
+      el.dataset.suffix=m[2];
+      co.observe(el);
+    }
+  }
+});
+
+/* ── Typed text effect on hero ── */
+var typedEl=document.getElementById('typed-industry');
+if(typedEl){
+  var words=['Real Estate.','SRI Finance.','Esports.','Web3.'];
+  var wi=0,ci=0,deleting=false;
+  function type(){
+    var word=words[wi];
+    if(!deleting){
+      typedEl.innerText=word.substring(0,ci+1);
+      ci++;
+      if(ci===word.length){deleting=true;setTimeout(type,1800);return;}
+    } else {
+      typedEl.innerText=word.substring(0,ci-1);
+      ci--;
+      if(ci===0){deleting=false;wi=(wi+1)%words.length;}
+    }
+    setTimeout(type,deleting?60:100);
+  }
+  setTimeout(type,1000);
+}
+
+/* ── Service card colourful icons ── */
+var iconClasses=['svc-icon-1','svc-icon-2','svc-icon-3','svc-icon-4','svc-icon-5','svc-icon-6','svc-icon-7','svc-icon-8'];
+document.querySelectorAll('.service-card .icon-box, .feature-card .icon-box').forEach(function(el,i){
+  el.className='icon-box '+iconClasses[i%8];
+});
+
+/* ── Staggered card reveal ── */
+document.querySelectorAll('.feature-card,.service-card,.testi-card,.case-card').forEach(function(el,i){
+  el.style.transitionDelay=(i*0.08)+'s';
+  ro.observe(el);
+});
+</script>
+
+<script>
+/* ── Nav active page highlight ── */
+(function(){
+  var path=window.location.pathname.split('/').pop()||'index.html';
+  document.querySelectorAll('.nav-link[href]').forEach(function(a){
+    if(a.getAttribute('href')===path)a.classList.add('active');
+  });
+})();
+</script>
+</body>
+</html>
